@@ -22,7 +22,7 @@
 #sidebar nav a:hover{background:var(--card);color:var(--tx)}
 #sidebar nav a.active{background:var(--acg);color:var(--ac);box-shadow:inset 3px 0 0 var(--ac)}
 #sidebar nav a i{width:18px;text-align:center;font-size:13px}
-#sidebar nav a.locked{opacity:.4;pointer-events:none}
+#sidebar nav a.locked{opacity:.35;pointer-events:none}
 .nb{position:absolute;right:11px;min-width:17px;height:17px;border-radius:9px;background:var(--dg);color:#fff;font-size:9px;font-weight:700;display:none;align-items:center;justify-content:center;padding:0 4px}.nb.show{display:inline-flex}
 #main{margin-left:248px;min-height:100vh}
 .pg{display:none;padding:24px 28px;animation:fu .3s ease}.pg.act{display:block}
@@ -33,7 +33,7 @@
 .sc.g::after{background:var(--ac)}.sc.r::after{background:var(--dg)}.sc.y::after{background:var(--wn)}.sc.b::after{background:var(--bl)}
 .cb{background:var(--card);border:1px solid var(--bdr);border-radius:14px;padding:18px}
 .tw{background:var(--card);border:1px solid var(--bdr);border-radius:14px;overflow-x:auto}
-.tw table{width:100%;border-collapse:collapse;min-width:860px}
+.tw table{width:100%;border-collapse:collapse;min-width:880px}
 .tw th{background:rgba(0,0,0,.3);padding:10px 12px;text-align:left;font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--tx2);border-bottom:1px solid var(--bdr)}
 .tw td{padding:9px 12px;font-size:12px;border-bottom:1px solid var(--bdr);vertical-align:middle}
 .tw tr:last-child td{border-bottom:none}.tw tr:hover td{background:var(--cardh)}
@@ -76,70 +76,61 @@ label{display:block;font-size:11px;font-weight:600;color:var(--tx2);margin-botto
 .es{text-align:center;padding:36px 20px;color:var(--tx2)}.es i{font-size:38px;margin-bottom:10px;opacity:.2}
 #mh{display:none;position:fixed;top:0;left:0;right:0;height:52px;background:var(--card);border-bottom:1px solid var(--bdr);z-index:40;align-items:center;padding:0 12px}
 #so{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:45}
-@media(max-width:768px){#sidebar{transform:translateX(-100%)}#sidebar.open{transform:translateX(0)}#so.show{display:block}#main{margin-left:0}#mh{display:flex}.pg{padding:64px 12px 18px}.tw table{min-width:740px}}
-
-/* LOGIN */
-#login-screen{position:fixed;inset:0;z-index:300;display:flex;align-items:center;justify-content:center;background:var(--bg);overflow:hidden}
-#login-screen::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle at 30% 40%,rgba(0,229,160,.06) 0%,transparent 50%),radial-gradient(circle at 70% 60%,rgba(59,130,246,.05) 0%,transparent 50%);animation:bgFloat 20s ease-in-out infinite}
-@keyframes bgFloat{0%,100%{transform:translate(0,0)}50%{transform:translate(-3%,-2%)}}
-.login-card{background:var(--card);border:1px solid var(--bdr);border-radius:20px;padding:36px;width:100%;max-width:420px;position:relative;animation:fu .5s ease}
-.role-badge{display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:6px;font-size:10px;font-weight:600}
-.role-admin{background:rgba(0,229,160,.12);color:#00e5a0}
-.role-user{background:rgba(59,130,246,.12);color:#60a5fa}
-.role-guest{background:rgba(255,165,2,.12);color:#ffa502}
+@media(max-width:768px){#sidebar{transform:translateX(-100%)}#sidebar.open{transform:translateX(0)}#so.show{display:block}#main{margin-left:0}#mh{display:flex}.pg{padding:64px 12px 18px}.tw table{min-width:760px}}
+#ls{position:fixed;inset:0;z-index:300;display:flex;align-items:center;justify-content:center;background:var(--bg);overflow:hidden}
+#ls::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle at 30% 40%,rgba(0,229,160,.06) 0%,transparent 50%),radial-gradient(circle at 70% 60%,rgba(59,130,246,.05) 0%,transparent 50%);animation:bgf 20s ease-in-out infinite}
+@keyframes bgf{0%,100%{transform:translate(0,0)}50%{transform:translate(-3%,-2%)}}
+.lc{background:var(--card);border:1px solid var(--bdr);border-radius:20px;padding:36px;width:100%;max-width:420px;position:relative;animation:fu .5s ease}
+.rb{display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:6px;font-size:10px;font-weight:600}
+.rb-admin{background:rgba(0,229,160,.12);color:#00e5a0}.rb-user{background:rgba(59,130,246,.12);color:#60a5fa}.rb-guest{background:rgba(255,165,2,.12);color:#ffa502}
+.pw-toggle{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--tx2);cursor:pointer;font-size:13px;padding:4px}
+.pw-toggle:hover{color:var(--tx)}
 </style>
 </head>
 <body>
 
-<!-- ========== LOGIN SCREEN ========== -->
-<div id="login-screen">
-  <div class="login-card">
-    <div class="text-center mb-6">
-      <div style="width:52px;height:52px;background:var(--acg);border:1.5px solid rgba(0,229,160,.3);border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px">
-        <i class="fas fa-shield-halved" style="color:var(--ac);font-size:22px"></i>
-      </div>
-      <h1 class="font-display font-bold text-xl">ExpiryWatch</h1>
-      <p style="color:var(--tx2);font-size:12.5px;margin-top:3px">Monitoring Kadaluarsa</p>
+<!-- LOGIN -->
+<div id="ls">
+<div class="lc">
+  <div class="text-center mb-6">
+    <div style="width:52px;height:52px;background:var(--acg);border:1.5px solid rgba(0,229,160,.3);border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px"><i class="fas fa-shield-halved" style="color:var(--ac);font-size:22px"></i></div>
+    <h1 class="font-display font-bold text-xl">ExpiryWatch</h1>
+    <p style="color:var(--tx2);font-size:12.5px;margin-top:3px">Monitoring Kadaluarsa</p>
+  </div>
+  <div class="space-y-3">
+    <div><label>User ID</label><div class="relative"><i class="fas fa-user" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--tx2);font-size:12px"></i><input class="ip" id="li-uid" placeholder="Masukkan User ID" style="padding-left:34px" autocomplete="username"></div></div>
+    <div><label>Password</label><div class="relative"><i class="fas fa-lock" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--tx2);font-size:12px"></i><input class="ip" id="li-pw" type="password" placeholder="Masukkan Password" style="padding-left:34px;padding-right:38px" autocomplete="current-password"><button class="pw-toggle" onclick="togglePw()" type="button"><i class="fas fa-eye" id="pw-icon"></i></button></div></div>
+    <button class="bt bt-p w-full justify-center" onclick="doLogin()" style="padding:11px"><i class="fas fa-right-to-bracket"></i> Masuk</button>
+    <div style="text-align:center"><span style="font-size:11px;color:var(--tx2)">atau</span></div>
+    <button class="bt bt-o w-full justify-center" onclick="doGuest()" style="padding:10px"><i class="fas fa-eye"></i> Masuk sebagai Pengunjung</button>
+  </div>
+  <div id="default-hint" style="margin-top:18px;padding:14px;background:rgba(0,229,160,.06);border:1px solid rgba(0,229,160,.15);border-radius:10px;display:none">
+    <div style="font-size:11px;font-weight:600;color:var(--ac);margin-bottom:4px"><i class="fas fa-info-circle"></i> Default Login (Pertama Kali)</div>
+    <div style="font-size:12px;color:var(--tx2);font-family:monospace;line-height:1.8">
+      User ID&nbsp;&nbsp;: <span style="color:var(--tx)">admin</span><br>
+      Password : <span style="color:var(--tx)">admin123</span>
     </div>
-    <div class="space-y-3">
-      <div>
-        <label>Token Akses</label>
-        <div class="relative">
-          <i class="fas fa-key" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--tx2);font-size:12px"></i>
-          <input class="ip" id="login-token" placeholder="Masukkan token akses..." style="padding-left:34px;font-family:monospace;letter-spacing:.5px" autocomplete="off">
-        </div>
-      </div>
-      <button class="bt bt-p w-full justify-center" onclick="doLogin()" style="padding:11px"><i class="fas fa-right-to-bracket"></i> Masuk</button>
-      <div style="text-align:center"><span style="font-size:11px;color:var(--tx2)">atau</span></div>
-      <button class="bt bt-o w-full justify-center" onclick="doGuest()" style="padding:10px"><i class="fas fa-eye"></i> Masuk sebagai Pengunjung</button>
-    </div>
-    <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--bdr);text-align:center">
-      <p style="font-size:10.5px;color:var(--tx2)">Pengunjung hanya bisa melihat data.<br>Minta token dari admin untuk akses penuh.</p>
-    </div>
+    <div style="font-size:10.5px;color:var(--tx2);margin-top:6px">Login lalu buka <b>Pengaturan</b> untuk sinkronisasi user dari Google Sheets.</div>
   </div>
 </div>
+</div>
 
-<!-- ========== APP SHELL ========== -->
-<div id="app-shell" style="display:none">
+<!-- APP -->
+<div id="as" style="display:none">
 <div id="mh">
   <button onclick="tsb()" style="background:none;border:none;color:var(--tx);font-size:17px;cursor:pointer;padding:5px"><i class="fas fa-bars"></i></button>
   <span class="font-display font-bold text-sm ml-2">ExpiryWatch</span>
   <div class="ml-auto flex items-center gap-2">
-    <span class="role-badge" id="hdr-role"></span>
-    <span style="font-size:11px;color:var(--tx2)" id="hdr-name"></span>
+    <span class="rb" id="hr"></span>
+    <span style="font-size:11px;color:var(--tx2)" id="hn"></span>
     <button onclick="doLogout()" style="background:none;border:none;color:var(--dg);font-size:14px;cursor:pointer;padding:5px" title="Logout"><i class="fas fa-right-from-bracket"></i></button>
   </div>
 </div>
 <div id="so" onclick="tsb()"></div>
 
 <aside id="sidebar">
-  <div class="logo">
-    <div class="flex items-center gap-2.5">
-      <div style="width:32px;height:32px;background:var(--acg);border:1px solid rgba(0,229,160,.25);border-radius:8px;display:flex;align-items:center;justify-content:center"><i class="fas fa-shield-halved" style="color:var(--ac);font-size:13px"></i></div>
-      <div><div class="font-display font-bold text-sm">ExpiryWatch</div><div style="font-size:10px;color:var(--tx2)">Monitoring Kadaluarsa</div></div>
-    </div>
-  </div>
-  <nav id="nav-links">
+  <div class="logo"><div class="flex items-center gap-2.5"><div style="width:32px;height:32px;background:var(--acg);border:1px solid rgba(0,229,160,.25);border-radius:8px;display:flex;align-items:center;justify-content:center"><i class="fas fa-shield-halved" style="color:var(--ac);font-size:13px"></i></div><div><div class="font-display font-bold text-sm">ExpiryWatch</div><div style="font-size:10px;color:var(--tx2)">Monitoring Kadaluarsa</div></div></div></div>
+  <nav id="nl">
     <a data-p="dashboard" class="active" onclick="nav('dashboard')"><i class="fas fa-chart-pie"></i>Dashboard<span class="nb" id="nb"></span></a>
     <a data-p="scan" onclick="nav('scan')"><i class="fas fa-barcode"></i>Scan & Lookup</a>
     <a data-p="add" onclick="nav('add')"><i class="fas fa-plus-circle"></i>Tambah Produk</a>
@@ -148,10 +139,7 @@ label{display:block;font-size:11px;font-weight:600;color:var(--tx2);margin-botto
     <a data-p="settings" onclick="nav('settings')"><i class="fas fa-gear"></i>Pengaturan</a>
   </nav>
   <div style="padding:10px 14px;border-top:1px solid var(--bdr)">
-    <div class="flex items-center justify-between">
-      <div class="flex items-center gap-2"><span class="gd g" style="width:5px;height:5px"></span><span style="font-size:10px;color:var(--tx2)" id="smc">Master: 0</span></div>
-      <button onclick="doLogout()" style="background:none;border:none;color:var(--tx2);font-size:11px;cursor:pointer" title="Logout"><i class="fas fa-right-from-bracket"></i></button>
-    </div>
+    <div class="flex items-center justify-between"><div class="flex items-center gap-2"><span class="gd g" style="width:5px;height:5px"></span><span style="font-size:10px;color:var(--tx2)" id="smc">Master: 0</span></div><button onclick="doLogout()" style="background:none;border:none;color:var(--tx2);font-size:11px;cursor:pointer" title="Logout"><i class="fas fa-right-from-bracket"></i></button></div>
   </div>
 </aside>
 
@@ -159,60 +147,25 @@ label{display:block;font-size:11px;font-weight:600;color:var(--tx2);margin-botto
 
 <!-- DASHBOARD -->
 <div id="pg-dashboard" class="pg act">
-  <div class="flex items-center justify-between mb-5 flex-wrap gap-3">
-    <div><h1 class="font-display font-bold text-xl">Dashboard</h1><p style="color:var(--tx2);font-size:12px;margin-top:1px" id="dd"></p></div>
-    <div class="flex gap-2" id="dash-actions"><button class="bt bt-o bt-s" onclick="nav('scan')"><i class="fas fa-barcode"></i> Scan</button><button class="bt bt-p bt-s" onclick="nav('add')"><i class="fas fa-plus"></i> Tambah</button></div>
-  </div>
+  <div class="flex items-center justify-between mb-5 flex-wrap gap-3"><div><h1 class="font-display font-bold text-xl">Dashboard</h1><p style="color:var(--tx2);font-size:12px;margin-top:1px" id="dd"></p></div><div class="flex gap-2 rw" id="da"><button class="bt bt-o bt-s" onclick="nav('scan')"><i class="fas fa-barcode"></i> Scan</button><button class="bt bt-p bt-s" onclick="nav('add')"><i class="fas fa-plus"></i> Tambah</button></div></div>
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-5" id="stats"></div>
-  <div class="grid grid-cols-1 lg:grid-cols-5 gap-3 mb-5">
-    <div class="cb lg:col-span-2"><h3 class="font-display font-semibold text-sm mb-3">Distribusi Status</h3><div style="max-width:190px;margin:0 auto"><canvas id="cd"></canvas></div></div>
-    <div class="cb lg:col-span-3"><h3 class="font-display font-semibold text-sm mb-3">Timeline Kadaluarsa</h3><canvas id="cb2"></canvas></div>
-  </div>
-  <div class="grid grid-cols-1 lg:grid-cols-2 gap-3">
-    <div class="cb"><h3 class="font-display font-semibold text-sm mb-3 flex items-center gap-2"><i class="fas fa-triangle-exclamation" style="color:var(--wn)"></i>Peringatan Urgent</h3><div id="al"></div></div>
-    <div class="cb"><h3 class="font-display font-semibold text-sm mb-3 flex items-center gap-2"><i class="fas fa-clock-rotate-left" style="color:var(--ac)"></i>Terakhir Ditambahkan</h3><div id="rc"></div></div>
-  </div>
+  <div class="grid grid-cols-1 lg:grid-cols-5 gap-3 mb-5"><div class="cb lg:col-span-2"><h3 class="font-display font-semibold text-sm mb-3">Distribusi Status</h3><div style="max-width:190px;margin:0 auto"><canvas id="cd"></canvas></div></div><div class="cb lg:col-span-3"><h3 class="font-display font-semibold text-sm mb-3">Timeline Kadaluarsa</h3><canvas id="cb2"></canvas></div></div>
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-3"><div class="cb"><h3 class="font-display font-semibold text-sm mb-3 flex items-center gap-2"><i class="fas fa-triangle-exclamation" style="color:var(--wn)"></i>Peringatan Urgent</h3><div id="al"></div></div><div class="cb"><h3 class="font-display font-semibold text-sm mb-3 flex items-center gap-2"><i class="fas fa-clock-rotate-left" style="color:var(--ac)"></i>Terakhir Ditambahkan</h3><div id="rc"></div></div></div>
 </div>
 
 <!-- SCAN -->
 <div id="pg-scan" class="pg">
-  <h1 class="font-display font-bold text-xl mb-1">Scan & Lookup</h1>
-  <p style="color:var(--tx2);font-size:12px;margin-bottom:16px">Scan barcode — data otomatis terisi dari master barang</p>
+  <h1 class="font-display font-bold text-xl mb-1">Scan & Lookup</h1><p style="color:var(--tx2);font-size:12px;margin-bottom:16px">Scan barcode — data otomatis terisi dari master barang</p>
   <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
-    <div>
-      <div id="vp"><div id="sph" class="flex flex-col items-center justify-center h-full" style="color:var(--tx2)"><i class="fas fa-camera" style="font-size:38px;opacity:.2;margin-bottom:8px"></i><p style="font-size:11.5px">Klik tombol untuk mulai scan</p></div><div class="sl" style="display:none" id="sln"></div></div>
-      <div class="flex gap-2 mt-3 justify-center"><button class="bt bt-p" id="bss" onclick="sscan()"><i class="fas fa-play"></i> Mulai Scan</button><button class="bt bt-d" id="bsp" onclick="stscan()" style="display:none"><i class="fas fa-stop"></i> Berhenti</button></div>
-      <div style="font-size:10.5px;color:var(--tx2);margin-top:8px;text-align:center"><i class="fas fa-circle-info"></i> EAN-13, EAN-8, Code-128, Code-39, UPC-A/E</div>
-      <div class="cb mt-3"><h3 class="font-display font-semibold text-sm mb-2 flex items-center gap-2"><i class="fas fa-keyboard" style="color:var(--tx2)"></i>Input Manual / USB Scanner</h3><div class="flex gap-2"><input class="ip" id="mbc" placeholder="Ketik atau scan barcode..." style="flex:1"><button class="bt bt-p bt-s" onclick="lmbc()"><i class="fas fa-search"></i> Lookup</button></div></div>
-    </div>
-    <div>
-      <div class="cb mb-3"><h3 class="font-display font-semibold text-sm mb-2">Hasil Lookup</h3><div id="sr"><div class="es" style="padding:20px"><i class="fas fa-barcode"></i><p style="margin-top:4px;font-size:11px">Scan atau ketik barcode</p></div></div></div>
-      <div class="cb" id="sqa" style="display:none">
-        <h3 class="font-display font-semibold text-sm mb-3">Tambahkan ke Monitoring</h3>
-        <div class="space-y-2.5">
-          <div><label>Barcode</label><input class="ip ro" id="sq-bc" readonly></div>
-          <div><label>Nama Produk</label><input class="ip" id="sq-nm"></div>
-          <div class="grid grid-cols-2 gap-2.5">
-            <div><label>Kategori</label><select class="ip" id="sq-ct"><option value="">-- Pilih --</option><option>Makanan</option><option>Minuman</option><option>Obat</option><option>Bumbu</option><option>Perawatan</option><option>Rumah Tangga</option><option>Lainnya</option></select></div>
-            <div><label>Satuan</label><select class="ip" id="sq-st"><option>pcs</option><option>botol</option><option>sachet</option><option>box</option><option>karton</option><option>kg</option><option>liter</option></select></div>
-          </div>
-          <div class="grid grid-cols-3 gap-2.5">
-            <div><label>Jumlah</label><input class="ip" id="sq-qt" type="number" min="1" value="1"></div>
-            <div><label>PIC</label><input class="ip" id="sq-pic" placeholder="Nama PIC"></div>
-            <div><label>Lokasi</label><input class="ip" id="sq-lk" placeholder="Rak A-1"></div>
-          </div>
-          <div><label>Tanggal Expired</label><input class="ip" id="sq-ex" type="date"></div>
-          <div class="flex gap-2"><button class="bt bt-p flex-1" onclick="qas()"><i class="fas fa-check"></i> Simpan</button><button class="bt bt-o" onclick="rsf()"><i class="fas fa-rotate-left"></i></button></div>
-        </div>
-      </div>
-    </div>
+    <div><div id="vp"><div id="sph" class="flex flex-col items-center justify-center h-full" style="color:var(--tx2)"><i class="fas fa-camera" style="font-size:38px;opacity:.2;margin-bottom:8px"></i><p style="font-size:11.5px">Klik tombol untuk mulai scan</p></div><div class="sl" style="display:none" id="sln"></div></div><div class="flex gap-2 mt-3 justify-center"><button class="bt bt-p" id="bss" onclick="sscan()"><i class="fas fa-play"></i> Mulai Scan</button><button class="bt bt-d" id="bsp" onclick="stscan()" style="display:none"><i class="fas fa-stop"></i> Berhenti</button></div><div style="font-size:10.5px;color:var(--tx2);margin-top:8px;text-align:center"><i class="fas fa-circle-info"></i> EAN-13, EAN-8, Code-128, Code-39, UPC-A/E</div><div class="cb mt-3"><h3 class="font-display font-semibold text-sm mb-2 flex items-center gap-2"><i class="fas fa-keyboard" style="color:var(--tx2)"></i>Input Manual / USB Scanner</h3><div class="flex gap-2"><input class="ip" id="mbc" placeholder="Ketik atau scan barcode..." style="flex:1"><button class="bt bt-p bt-s" onclick="lmbc()"><i class="fas fa-search"></i> Lookup</button></div></div></div>
+    <div><div class="cb mb-3"><h3 class="font-display font-semibold text-sm mb-2">Hasil Lookup</h3><div id="sr"><div class="es" style="padding:20px"><i class="fas fa-barcode"></i><p style="margin-top:4px;font-size:11px">Scan atau ketik barcode</p></div></div></div>
+    <div class="cb" id="sqa" style="display:none"><h3 class="font-display font-semibold text-sm mb-3">Tambahkan ke Monitoring</h3><div class="space-y-2.5"><div><label>Barcode</label><input class="ip ro" id="sq-bc" readonly></div><div><label>Nama Produk</label><input class="ip" id="sq-nm"></div><div class="grid grid-cols-2 gap-2.5"><div><label>Kategori</label><select class="ip" id="sq-ct"><option value="">-- Pilih --</option><option>Makanan</option><option>Minuman</option><option>Obat</option><option>Bumbu</option><option>Perawatan</option><option>Rumah Tangga</option><option>Lainnya</option></select></div><div><label>Satuan</label><select class="ip" id="sq-st"><option>pcs</option><option>botol</option><option>sachet</option><option>box</option><option>karton</option><option>kg</option><option>liter</option></select></div></div><div class="grid grid-cols-3 gap-2.5"><div><label>Jumlah</label><input class="ip" id="sq-qt" type="number" min="1" value="1"></div><div><label>PIC</label><input class="ip" id="sq-pic" placeholder="Nama PIC"></div><div><label>Lokasi</label><input class="ip" id="sq-lk" placeholder="Rak A-1"></div></div><div><label>Tanggal Expired</label><input class="ip" id="sq-ex" type="date"></div><div class="flex gap-2"><button class="bt bt-p flex-1" onclick="qas()"><i class="fas fa-check"></i> Simpan</button><button class="bt bt-o" onclick="rsf()"><i class="fas fa-rotate-left"></i></button></div></div></div></div>
   </div>
 </div>
 
 <!-- TAMBAH -->
 <div id="pg-add" class="pg">
-  <h1 class="font-display font-bold text-xl mb-1">Tambah Produk</h1>
-  <p style="color:var(--tx2);font-size:12px;margin-bottom:18px">Ketik barcode lalu klik Lookup untuk ambil data master</p>
+  <h1 class="font-display font-bold text-xl mb-1">Tambah Produk</h1><p style="color:var(--tx2);font-size:12px;margin-bottom:18px">Ketik barcode lalu klik Lookup untuk ambil data master</p>
   <div class="cb" style="max-width:640px">
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
       <div class="sm:col-span-2"><div class="flex gap-2"><div class="flex-1"><label>Barcode / SKU</label><input class="ip" id="f-bc" placeholder="Scan atau ketik"></div><div style="padding-top:18px"><button class="bt bt-bl bt-s" onclick="lff()"><i class="fas fa-search"></i> Lookup</button></div></div></div>
@@ -232,10 +185,7 @@ label{display:block;font-size:11px;font-weight:600;color:var(--tx2);margin-botto
 
 <!-- DAFTAR -->
 <div id="pg-list" class="pg">
-  <div class="flex items-center justify-between mb-3 flex-wrap gap-3">
-    <h1 class="font-display font-bold text-xl">Daftar Produk</h1>
-    <button class="bt bt-p bt-s act-add" onclick="nav('add')"><i class="fas fa-plus"></i> Tambah</button>
-  </div>
+  <div class="flex items-center justify-between mb-3 flex-wrap gap-3"><h1 class="font-display font-bold text-xl">Daftar Produk</h1><button class="bt bt-p bt-s rw" onclick="nav('add')"><i class="fas fa-plus"></i> Tambah</button></div>
   <div class="flex items-center gap-2 mb-3 flex-wrap">
     <div class="relative flex-1" style="min-width:170px;max-width:300px"><i class="fas fa-search" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--tx2);font-size:10px"></i><input class="ip" style="padding-left:30px" id="si" placeholder="Cari nama, barcode, PIC..." oninput="rpl()"></div>
     <div class="flex gap-1" id="fts"><button class="ft active" data-f="all" onclick="sf('all')">Semua</button><button class="ft" data-f="danger" onclick="sf('danger')">Expired</button><button class="ft" data-f="warn" onclick="sf('warn')">< 30 Hari</button><button class="ft" data-f="safe" onclick="sf('safe')">Aman</button></div>
@@ -246,10 +196,7 @@ label{display:block;font-size:11px;font-weight:600;color:var(--tx2);margin-botto
 
 <!-- MASTER -->
 <div id="pg-master" class="pg">
-  <div class="flex items-center justify-between mb-3 flex-wrap gap-3">
-    <div><h1 class="font-display font-bold text-xl">Master Barang</h1><p style="color:var(--tx2);font-size:11px;margin-top:1px">Database lookup barcode dari Google Sheets</p></div>
-    <div class="flex gap-2"><button class="bt bt-bl bt-s act-admin" onclick="sym()"><i class="fas fa-sync-alt"></i> Sync Sheets</button><button class="bt bt-o bt-s act-admin" onclick="amr()"><i class="fas fa-plus"></i> Tambah Lokal</button></div>
-  </div>
+  <div class="flex items-center justify-between mb-3 flex-wrap gap-3"><div><h1 class="font-display font-bold text-xl">Master Barang</h1><p style="color:var(--tx2);font-size:11px;margin-top:1px">Database lookup barcode dari Google Sheets</p></div><div class="flex gap-2"><button class="bt bt-bl bt-s ra" onclick="sym()"><i class="fas fa-sync-alt"></i> Sync Sheets</button><button class="bt bt-o bt-s ra" onclick="amr()"><i class="fas fa-plus"></i> Tambah Lokal</button></div></div>
   <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
     <div class="sc b"><div style="font-size:10px;color:var(--tx2);font-weight:600;text-transform:uppercase;letter-spacing:.4px;margin-bottom:2px">Total Master</div><div class="font-display font-bold text-2xl" id="mt">0</div></div>
     <div class="sc g"><div style="font-size:10px;color:var(--tx2);font-weight:600;text-transform:uppercase;letter-spacing:.4px;margin-bottom:2px">Terakhir Sync</div><div style="font-size:12.5px;font-weight:500" id="mls">Belum pernah</div></div>
@@ -261,40 +208,74 @@ label{display:block;font-size:11px;font-weight:600;color:var(--tx2);margin-botto
 
 <!-- SETTINGS -->
 <div id="pg-settings" class="pg">
-  <h1 class="font-display font-bold text-xl mb-1">Pengaturan</h1>
-  <p style="color:var(--tx2);font-size:12px;margin-bottom:18px">Integrasi Google Sheets & Manajemen Token</p>
+  <h1 class="font-display font-bold text-xl mb-1">Pengaturan</h1><p style="color:var(--tx2);font-size:12px;margin-bottom:18px">Integrasi Google Sheets & Sinkronisasi User</p>
   <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-    <div class="cb"><h3 class="font-display font-semibold text-sm mb-2 flex items-center gap-2"><i class="fas fa-key" style="color:var(--ac)"></i>Manajemen Token</h3>
-      <p style="font-size:11.5px;color:var(--tx2);margin-bottom:10px">Buat dan kelola token akses untuk user. Hanya admin.</p>
-      <div class="space-y-2 mb-3" id="token-list"></div>
-      <div class="flex gap-2"><button class="bt bt-p bt-s" onclick="genToken('admin')"><i class="fas fa-plus"></i> Token Admin</button><button class="bt bt-bl bt-s" onclick="genToken('user')"><i class="fas fa-plus"></i> Token User</button></div>
+    <div class="cb ra"><h3 class="font-display font-semibold text-sm mb-2 flex items-center gap-2"><i class="fas fa-users" style="color:var(--ac)"></i>Sinkronisasi User</h3>
+      <p style="font-size:11.5px;color:var(--tx2);margin-bottom:10px">User ID & password diambil dari sheet "Users" di spreadsheet. Setelah sync, login menggunakan kredensial dari spreadsheet.</p>
+      <div class="space-y-2 mb-3" id="ul"></div>
+      <button class="bt bt-p bt-s" onclick="syu()"><i class="fas fa-sync-alt"></i> Sync User dari Sheets</button>
     </div>
-    <div class="cb"><h3 class="font-display font-semibold text-sm mb-2 flex items-center gap-2"><i class="fas fa-database" style="color:var(--bl)"></i>URL Master Barang</h3>
-      <p style="font-size:11.5px;color:var(--tx2);margin-bottom:10px">Wajib diisi agar scan auto-fill berfungsi.</p>
-      <label>Webhook URL</label><input class="ip" id="s-mu" placeholder="https://script.google.com/macros/s/xxx/exec" oninput="ssv()" style="margin-bottom:8px"><div class="flex gap-2"><button class="bt bt-bl bt-s" onclick="tmu()"><i class="fas fa-vial"></i> Test</button><button class="bt bt-o bt-s" onclick="sym()"><i class="fas fa-sync-alt"></i> Sync</button></div>
+    <div class="cb"><h3 class="font-display font-semibold text-sm mb-2 flex items-center gap-2"><i class="fas fa-link" style="color:var(--bl)"></i>URL Spreadsheet (Google Apps Script)</h3>
+      <p style="font-size:11.5px;color:var(--tx2);margin-bottom:10px">Satu URL untuk semua: auth, master, dan webhook.</p>
+      <label>Script URL</label><input class="ip" id="s-url" placeholder="https://script.google.com/macros/s/xxx/exec" oninput="ssv()" style="margin-bottom:8px"><div class="flex gap-2"><button class="bt bt-bl bt-s" onclick="turl()"><i class="fas fa-vial"></i> Test</button><button class="bt bt-o bt-s" onclick="sym()"><i class="fas fa-sync-alt"></i> Sync Master</button></div>
     </div>
-    <div class="cb"><h3 class="font-display font-semibold text-sm mb-2 flex items-center gap-2"><i class="fas fa-file-csv" style="color:var(--ac)"></i>Export / Import</h3>
+    <div class="cb"><h3 class="font-display font-semibold text-sm mb-2 flex items-center gap-2"><i class="fas fa-file-csv" style="color:var(--ac)"></i>Export / Import Data</h3>
       <p style="font-size:11.5px;color:var(--tx2);margin-bottom:10px">Data produk monitoring.</p>
       <div class="flex gap-2"><button class="bt bt-p bt-s" onclick="ecsv()"><i class="fas fa-download"></i> Export CSV</button><input type="file" accept=".csv" id="ifl" style="display:none" onchange="icsv(event)"><button class="bt bt-o bt-s" onclick="document.getElementById('ifl').click()"><i class="fas fa-upload"></i> Import CSV</button></div>
     </div>
-    <div class="cb"><h3 class="font-display font-semibold text-sm mb-2 flex items-center gap-2"><i class="fas fa-paper-plane" style="color:var(--ac)"></i>Webhook Data Expired (Opsional)</h3>
-      <p style="font-size:11.5px;color:var(--tx2);margin-bottom:10px">Kirim data tiap tambah produk ke sheet terpisah.</p><input class="ip" id="s-wu" placeholder="https://script.google.com/macros/s/yyy/exec" oninput="ssv()">
-    </div>
-    <div class="cb lg:col-span-2" style="border-color:rgba(255,71,87,.2)"><h3 class="font-display font-semibold text-sm mb-2 flex items-center gap-2" style="color:var(--dg)"><i class="fas fa-triangle-exclamation"></i>Zona Berbahaya</h3>
+    <div class="cb" style="border-color:rgba(255,71,87,.2)"><h3 class="font-display font-semibold text-sm mb-2 flex items-center gap-2" style="color:var(--dg)"><i class="fas fa-triangle-exclamation"></i>Zona Berbahaya</h3>
       <p style="font-size:11.5px;color:var(--tx2);margin-bottom:10px">Tidak bisa dibatalkan.</p>
-      <div class="flex gap-2 flex-wrap"><button class="bt bt-d bt-s act-admin" onclick="cca('p')"><i class="fas fa-trash"></i> Hapus Data Produk</button><button class="bt bt-d bt-s act-admin" onclick="cca('m')"><i class="fas fa-trash"></i> Hapus Master Lokal</button></div>
+      <div class="flex gap-2 flex-wrap"><button class="bt bt-d bt-s ra" onclick="cca('p')"><i class="fas fa-trash"></i> Hapus Data Produk</button><button class="bt bt-d bt-s ra" onclick="cca('m')"><i class="fas fa-trash"></i> Hapus Master Lokal</button><button class="bt bt-d bt-s ra" onclick="cca('u')"><i class="fas fa-trash"></i> Reset User ke Default</button></div>
     </div>
   </div>
   <div class="cb mt-4">
     <h3 class="font-display font-semibold text-sm mb-2 flex items-center gap-2"><i class="fab fa-google" style="color:#34a853"></i>Google Apps Script — Paste di script.google.com</h3>
-    <div style="background:var(--bg);border:1px solid var(--bdr);border-radius:10px;padding:14px;font-size:10.5px;font-family:monospace;color:var(--tx2);max-height:280px;overflow-y:auto;white-space:pre-wrap;line-height:1.6">// Spreadsheet: 2 Sheet
-// Sheet "Master": barcode | nama | kategori | satuan | shelf_life_days
+    <div style="background:var(--bg);border:1px solid var(--bdr);border-radius:10px;padding:14px;font-size:10.5px;font-family:monospace;color:var(--tx2);max-height:320px;overflow-y:auto;white-space:pre-wrap;line-height:1.6">// Spreadsheet: 3 Sheet
+// Sheet "Users"  : uid | password | name | role
+// Sheet "Master" : barcode | nama | kategori | satuan | shelf_life_days
 // Sheet "Expired": barcode | nama | kategori | jumlah | satuan
 //   | tgl_masuk | tgl_expired | lokasi | pic | catatan | created_at
 
 function doGet(e) {
   var a = e.parameter.action;
   var ss = SpreadsheetApp.getActiveSpreadsheet();
+
+  if (a === 'auth') {
+    var uid = e.parameter.uid || '';
+    var pw  = e.parameter.pass || '';
+    var d = ss.getSheetByName('Users').getDataRange().getValues();
+    for (var i = 1; i < d.length; i++) {
+      if (String(d[i][0]).trim() === uid
+       && String(d[i][1]).trim() === pw) {
+        return ContentService.createTextOutput(JSON.stringify({
+          found: true, uid: d[i][0],
+          name: d[i][2] || '', role: d[i][3] || 'user'
+        })).setMimeType(ContentService.MimeType.JSON);
+      }
+    }
+    return ContentService.createTextOutput(
+      JSON.stringify({found:false})
+    ).setMimeType(ContentService.MimeType.JSON);
+  }
+
+  if (a === 'sync_users') {
+    var d = ss.getSheetByName('Users').getDataRange().getValues();
+    var users = [];
+    for (var i = 1; i < d.length; i++) {
+      if (d[i][0] && d[i][1]) {
+        users.push({
+          uid: String(d[i][0]).trim(),
+          password: String(d[i][1]).trim(),
+          name: d[i][2] || '',
+          role: d[i][3] || 'user'
+        });
+      }
+    }
+    return ContentService.createTextOutput(
+      JSON.stringify({users:users, total:users.length})
+    ).setMimeType(ContentService.MimeType.JSON);
+  }
+
   if (a === 'lookup') {
     var bc = e.parameter.barcode || '';
     var d = ss.getSheetByName('Master').getDataRange().getValues();
@@ -311,14 +292,17 @@ function doGet(e) {
       JSON.stringify({found:false})
     ).setMimeType(ContentService.MimeType.JSON);
   }
+
   if (a === 'sync') {
     var d = ss.getSheetByName('Master').getDataRange().getValues();
     var items = [];
     for (var i = 1; i < d.length; i++) {
       if (d[i][0] && d[i][1]) {
         items.push({
-          barcode: String(d[i][0]).trim(), namaProduk: d[i][1],
-          kategori: d[i][2] || '', satuan: d[i][3] || 'pcs',
+          barcode: String(d[i][0]).trim(),
+          namaProduk: d[i][1],
+          kategori: d[i][2] || '',
+          satuan: d[i][3] || 'pcs',
           shelfLife: parseInt(d[i][4]) || 0
         });
       }
@@ -348,25 +332,19 @@ function doPost(e) {
   </div>
 </div>
 
-</div>
-</div>
+</div></div>
 
 <!-- MODAL EDIT -->
-<div class="mo" id="m-e"><div class="md"><div class="flex items-center justify-between mb-4"><h2 class="font-display font-bold text-lg">Edit Produk</h2><button onclick="cm('m-e')" style="background:none;border:none;color:var(--tx2);font-size:15px;cursor:pointer"><i class="fas fa-times"></i></button></div><div class="space-y-2.5"><input type="hidden" id="e-id"><div><label>Barcode</label><input class="ip" id="e-bc"></div><div><label>Nama</label><input class="ip" id="e-nm"></div><div class="grid grid-cols-2 gap-2.5"><div><label>Kategori</label><select class="ip" id="e-ct"><option>Makanan</option><option>Minuman</option><option>Obat</option><option>Bumbu</option><option>Perawatan</option><option>Rumah Tangga</option><option>Lainnya</option></select></div><div><label>Jumlah</label><input class="ip" id="e-qt" type="number" min="1"></div></div><div class="grid grid-cols-3 gap-2.5"><div><label>Satuan</label><select class="ip" id="e-st"><option>pcs</option><option>botol</option><option>sachet</option><option>box</option><option>karton</option><option>kg</option><option>liter</option></select></div><div><label>PIC</label><input class="ip" id="e-pic" placeholder="Nama PIC"></div><div><label>Lokasi</label><input class="ip" id="e-lk"></div></div><div class="grid grid-cols-2 gap-2.5"><div><label>Tgl Masuk</label><input class="ip" id="e-ms" type="date"></div><div><label>Tgl Expired</label><input class="ip" id="e-ex" type="date"></div></div><div><label>Catatan</label><input class="ip" id="e-nt"></div></div><div class="flex gap-2 mt-4"><button class="bt bt-p" onclick="se()"><i class="fas fa-check"></i> Simpan</button><button class="bt bt-o" onclick="cm('m-e')">Batal</button></div></div></div>
-
-<!-- MODAL TAMBAH MASTER -->
-<div class="mo" id="m-ma"><div class="md" style="max-width:400px"><div class="flex items-center justify-between mb-4"><h2 class="font-display font-bold text-lg">Tambah Master Lokal</h2><button onclick="cm('m-ma')" style="background:none;border:none;color:var(--tx2);font-size:15px;cursor:pointer"><i class="fas fa-times"></i></button></div><div class="space-y-2.5"><div><label>Barcode</label><input class="ip" id="ma-bc" placeholder="8992761136000"></div><div><label>Nama Produk</label><input class="ip" id="ma-nm" placeholder="Indomie Mi Goreng"></div><div class="grid grid-cols-2 gap-2.5"><div><label>Kategori</label><select class="ip" id="ma-ct"><option value="">-- Pilih --</option><option>Makanan</option><option>Minuman</option><option>Obat</option><option>Bumbu</option><option>Perawatan</option><option>Rumah Tangga</option><option>Lainnya</option></select></div><div><label>Satuan</label><select class="ip" id="ma-st"><option>pcs</option><option>botol</option><option>sachet</option><option>box</option><option>karton</option><option>kg</option><option>liter</option></select></div></div><div><label>Shelf Life (hari)</label><input class="ip" id="ma-sl" type="number" min="0" placeholder="365"></div></div><div class="flex gap-2 mt-4"><button class="bt bt-p flex-1" onclick="sml()"><i class="fas fa-check"></i> Simpan</button><button class="bt bt-o" onclick="cm('m-ma')">Batal</button></div></div></div>
-
+<div class="mo" id="m-e"><div class="md"><div class="flex items-center justify-between mb-4"><h2 class="font-display font-bold text-lg">Edit Produk</h2><button onclick="cm('m-e')" style="background:none;border:none;color:var(--tx2);font-size:15px;cursor:pointer"><i class="fas fa-times"></i></button></div><div class="space-y-2.5"><input type="hidden" id="e-id"><div><label>Barcode</label><input class="ip" id="e-bc"></div><div><label>Nama</label><input class="ip" id="e-nm"></div><div class="grid grid-cols-2 gap-2.5"><div><label>Kategori</label><select class="ip" id="e-ct"><option>Makanan</option><option>Minuman</option><option>Obat</option><option>Bumbu</option><option>Perawatan</option><option>Rumah Tangga</option><option>Lainnya</option></select></div><div><label>Jumlah</label><input class="ip" id="e-qt" type="number" min="1"></div></div><div class="grid grid-cols-3 gap-2.5"><div><label>Satuan</label><select class="ip" id="e-st"><option>pcs</option><option>botol</option><option>sachet</option><option>box</option><option>karton</option><option>kg</option><option>liter</option></select></div><div><label>PIC</label><input class="ip" id="e-pic"></div><div><label>Lokasi</label><input class="ip" id="e-lk"></div></div><div class="grid grid-cols-2 gap-2.5"><div><label>Tgl Masuk</label><input class="ip" id="e-ms" type="date"></div><div><label>Tgl Expired</label><input class="ip" id="e-ex" type="date"></div></div><div><label>Catatan</label><input class="ip" id="e-nt"></div></div><div class="flex gap-2 mt-4"><button class="bt bt-p" onclick="se()"><i class="fas fa-check"></i> Simpan</button><button class="bt bt-o" onclick="cm('m-e')">Batal</button></div></div></div>
+<!-- MODAL MASTER -->
+<div class="mo" id="m-ma"><div class="md" style="max-width:400px"><div class="flex items-center justify-between mb-4"><h2 class="font-display font-bold text-lg">Tambah Master Lokal</h2><button onclick="cm('m-ma')" style="background:none;border:none;color:var(--tx2);font-size:15px;cursor:pointer"><i class="fas fa-times"></i></button></div><div class="space-y-2.5"><div><label>Barcode</label><input class="ip" id="ma-bc"></div><div><label>Nama Produk</label><input class="ip" id="ma-nm"></div><div class="grid grid-cols-2 gap-2.5"><div><label>Kategori</label><select class="ip" id="ma-ct"><option value="">--</option><option>Makanan</option><option>Minuman</option><option>Obat</option><option>Bumbu</option><option>Perawatan</option><option>Rumah Tangga</option><option>Lainnya</option></select></div><div><label>Satuan</label><select class="ip" id="ma-st"><option>pcs</option><option>botol</option><option>sachet</option><option>box</option><option>karton</option><option>kg</option><option>liter</option></select></div></div><div><label>Shelf Life (hari)</label><input class="ip" id="ma-sl" type="number" min="0"></div></div><div class="flex gap-2 mt-4"><button class="bt bt-p flex-1" onclick="sml()"><i class="fas fa-check"></i> Simpan</button><button class="bt bt-o" onclick="cm('m-ma')">Batal</button></div></div></div>
 <!-- MODAL KONFIRMASI -->
-<div class="mo" id="m-c"><div class="md" style="max-width:370px;text-align:center"><i class="fas fa-triangle-exclamation" style="font-size:34px;color:var(--wn);margin-bottom:10px"></i><h2 class="font-display font-bold text-lg mb-1" id="ctt">Konfirmasi</h2><p style="font-size:12px;color:var(--tx2);margin-bottom:14px" id="cmsg"></p><div class="flex gap-2 justify-center"><button class="bt bt-d" id="cyes">Ya</button><button class="bt bt-o" onclick="cm('m-c')">Batal</button></div></div></div>
+<div class="mo" id="m-c"><div class="md" style="max-width:370px;text-align:center"><i class="fas fa-triangle-exclamation" style="font-size:34px;color:var(--wn);margin-bottom:10px"></i><h2 class="font-display font-bold text-lg mb-1" id="ctt"></h2><p style="font-size:12px;color:var(--tx2);margin-bottom:14px" id="cmsg"></p><div class="flex gap-2 justify-center"><button class="bt bt-d" id="cyes">Ya</button><button class="bt bt-o" onclick="cm('m-c')">Batal</button></div></div></div>
 
 <div id="ts"></div>
 
 <script>
-/* ====== KEYS ====== */
-const KP='ew_prod',KM='ew_master',KMU='ew_mu',KWU='ew_wu',KLS='ew_ls',KT='ew_tokens',KA='ew_auth',DW=30;
-
-/* ====== STATE ====== */
+const KP='ew_prod',KM='ew_master',KURL='ew_url',KLS='ew_ls',KU='ew_users',KA='ew_auth',DW=30;
 let P=[],M=[],sR=false,cF='all',cD=null,cB=null,AU=null;
 
 /* ====== UTILS ====== */
@@ -377,334 +355,198 @@ const fd=d=>d?new Date(d).toLocaleDateString('id-ID',{day:'numeric',month:'short
 const tp=n=>{const d=new Date();d.setDate(d.getDate()+n);return d.toISOString().split('T')[0]};
 function gs(p){const d=db(new Date(),p.tanggalExpired);if(d<0)return{l:'Expired',c:'danger',k:'danger',d};if(d<=DW)return{l:d+' hari lagi',c:'warn',k:'warn',d};return{l:'Aman',c:'safe',k:'safe',d}}
 
-/* ====== AUTH ====== */
-function loadTokens(){try{return JSON.parse(localStorage.getItem(KT))||[]}catch{return[]}}
-function saveTokens(t){localStorage.setItem(KT,JSON.stringify(t))}
+/* ====== AUTH & USERS ====== */
+const DEFAULT_USERS=[{uid:'admin',password:'admin123',name:'Admin',role:'admin'}];
+
+function loadUsers(){try{return JSON.parse(localStorage.getItem(KU))||[]}catch{return[]}}
+function saveUsers(u){localStorage.setItem(KU,JSON.stringify(u))}
 function getAuth(){try{return JSON.parse(localStorage.getItem(KA))}catch{return null}}
 function setAuth(a){localStorage.setItem(KA,JSON.stringify(a));AU=a}
 function clearAuth(){localStorage.removeItem(KA);AU=null}
 
-function initTokens(){
-  let t=loadTokens();
-  if(!t.length){
-    const adminTk=gid().toUpperCase()+gid().toUpperCase();
-    t=[{token:adminTk,role:'admin',name:'Admin Utama',created:ts()}];
-    saveTokens(t);
-  }
+function initUsers(){
+  let u=loadUsers();
+  if(!u.length){u=JSON.parse(JSON.stringify(DEFAULT_USERS));saveUsers(u)}
+  return u;
+}
+
+function isDefaultUsers(){const u=loadUsers();if(u.length!==1)return false;return u[0].uid==='admin'&&u[0].password==='admin123'}
+
+function togglePw(){
+  const i=document.getElementById('li-pw'),ic=document.getElementById('pw-icon');
+  if(i.type==='password'){i.type='text';ic.className='fas fa-eye-slash'}
+  else{i.type='password';ic.className='fas fa-eye'}
 }
 
 function doLogin(){
-  const tk=document.getElementById('login-token').value.trim().toUpperCase();
-  if(!tk){toast('Masukkan token','er');return}
-  const tokens=loadTokens();
-  const found=tokens.find(t=>t.token===tk);
-  if(!found){toast('Token tidak valid','er');return}
-  setAuth({token:found.token,role:found.role,name:found.name});
+  const uid=document.getElementById('li-uid').value.trim();
+  const pw=document.getElementById('li-pw').value;
+  if(!uid||!pw){toast('Masukkan User ID dan Password','er');return}
+  const users=loadUsers();
+  const found=users.find(u=>u.uid===uid&&u.password===pw);
+  if(!found){toast('User ID atau Password salah','er');return}
+  setAuth({uid:found.uid,role:found.role,name:found.name});
   enterApp();
 }
 
-function doGuest(){
-  setAuth({token:'',role:'guest',name:'Pengunjung'});
-  enterApp();
-}
+function doGuest(){setAuth({uid:'',role:'guest',name:'Pengunjung'});enterApp()}
 
-function doLogout(){
-  clearAuth();
-  document.getElementById('app-shell').style.display='none';
-  document.getElementById('login-screen').style.display='flex';
-  document.getElementById('login-token').value='';
-}
+function doLogout(){clearAuth();document.getElementById('as').style.display='none';document.getElementById('ls').style.display='flex';document.getElementById('li-uid').value='';document.getElementById('li-pw').value='';document.getElementById('li-pw').type='password';document.getElementById('pw-icon').className='fas fa-eye'}
 
 function enterApp(){
-  document.getElementById('login-screen').style.display='none';
-  document.getElementById('app-shell').style.display='block';
-  applyRoleUI();
-  nav('dashboard');
+  document.getElementById('ls').style.display='none';
+  document.getElementById('as').style.display='block';
+  applyRoleUI();nav('dashboard');
 }
 
 function applyRoleUI(){
-  const r=AU?AU.role:'guest';
-  const n=AU?AU.name:'Pengunjung';
-  // Header
-  const hr=document.getElementById('hdr-role');
-  hr.className='role-badge role-'+r;
-  hr.textContent=r==='admin'?'ADMIN':r==='user'?'USER':'GUEST';
-  document.getElementById('hdr-name').textContent=n;
-  // Sidebar nav lock
+  const r=AU?AU.role:'guest',n=AU?AU.name:'Pengunjung';
+  const hr=document.getElementById('hr');hr.className='rb rb-'+r;hr.textContent=r==='admin'?'ADMIN':r==='user'?'USER':'GUEST';
+  document.getElementById('hn').textContent=n;
   const locked=['scan','add','master','settings'];
-  document.querySelectorAll('#nav-links a').forEach(a=>{
-    const p=a.dataset.p;
-    if(r==='guest'&&locked.includes(p)){a.classList.add('locked')}
-    else{a.classList.remove('locked')}
-  });
-  // Hide action buttons for guest
-  document.querySelectorAll('.act-admin').forEach(e=>e.style.display=r==='admin'?'':'none');
-  document.querySelectorAll('.act-add').forEach(e=>e.style.display=r!=='guest'?'':'none');
-  document.getElementById('dash-actions').style.display=r!=='guest'?'':'none';
+  document.querySelectorAll('#nl a').forEach(a=>{const p=a.dataset.p;a.classList.toggle('locked',r==='guest'&&locked.includes(p))});
+  document.querySelectorAll('.ra').forEach(e=>e.style.display=r==='admin'?'':'none');
+  document.querySelectorAll('.rw').forEach(e=>e.style.display=r!=='guest'?'':'none');
+  document.getElementById('da').style.display=r!=='guest'?'':'none';
 }
 
-function canWrite(){return AU&&AU.role!=='guest'}
-function isAdmin(){return AU&&AU.role==='admin'}
+function canW(){return AU&&AU.role!=='guest'}
+function isAd(){return AU&&AU.role==='admin'}
+
+/* ====== SYNC USERS ====== */
+async function syu(){
+  if(!isAd()){toast('Hanya admin','er');return}
+  const url=localStorage.getItem(KURL);
+  if(!url){toast('URL Spreadsheet belum diisi. Isi di kolom Script URL lalu coba lagi.','er');return}
+  toast('Mengsinkronisasi user...','in');
+  try{
+    const r=await fetch(url+'?action=sync_users');
+    const d=await r.json();
+    if(d.users&&d.users.length){
+      // Cek apakah admin yang login masih ada di spreadsheet
+      const me=d.users.find(u=>u.uid===AU.uid);
+      if(!me){
+        toast('PERINGATAN: User Anda ('+AU.uid+') tidak ditemukan di spreadsheet. Sync dibatalkan.','er');return;
+      }
+      saveUsers(d.users);
+      // Update auth dengan data terbaru dari spreadsheet
+      setAuth({uid:me.uid,role:me.role,name:me.name});
+      applyRoleUI();
+      rul();
+      toast('Sync berhasil: '+d.users.length+' user dari spreadsheet');
+    }else{toast('Sheet "Users" kosong atau tidak ada data','in')}
+  }catch{toast('Gagal sync. Cek URL dan pastikan akses = Anyone.','er')}
+}
+
+function rul(){
+  const el=document.getElementById('ul');if(!isAd()){el.innerHTML='';return}
+  const users=loadUsers();
+  const src=localStorage.getItem(KURL)?'Google Sheets':'Lokal (default)';
+  el.innerHTML=`<div style="font-size:11px;color:var(--tx2);margin-bottom:6px">Sumber: <b>${src}</b> — ${users.length} user terdaftar</div>`+
+    users.map(u=>`<div style="background:var(--bg);border:1px solid var(--bdr);border-radius:8px;padding:7px 10px;display:flex;align-items:center;gap:8px;margin-bottom:4px">
+      <span class="rb rb-${u.role}" style="flex-shrink:0">${u.role.toUpperCase()}</span>
+      <div style="flex:1;min-width:0"><div style="font-size:11.5px;font-weight:600">${u.name} <span style="color:var(--tx2);font-weight:400">(${u.uid})</span></div></div>
+      ${AU&&AU.uid===u.uid?'<span style="font-size:10px;color:var(--ac)"><i class="fas fa-circle-check"></i> Anda</span>':''}
+    </div>`).join('');
+}
 
 /* ====== PERSISTENCE ====== */
 function lp(){try{P=JSON.parse(localStorage.getItem(KP))||[]}catch{P=[]}if(!P.length){P=sd();sp()}}
 function sp(){localStorage.setItem(KP,JSON.stringify(P))}
 function lm(){try{M=JSON.parse(localStorage.getItem(KM))||[]}catch{M=[]}if(!M.length){M=sm();svm()}}
 function svm(){localStorage.setItem(KM,JSON.stringify(M));umu()}
-
-function umu(){
-  document.getElementById('smc').textContent='Master: '+M.length;
-  document.getElementById('mt').textContent=M.length;
-  const ls=localStorage.getItem(KLS);document.getElementById('mls').textContent=ls?new Date(ls).toLocaleString('id-ID'):'Belum pernah';
-  document.getElementById('msr').textContent=localStorage.getItem(KMU)?'Google Sheets':'Lokal (contoh)';
-  const u=P.filter(p=>gs(p).k!=='safe').length;const nb=document.getElementById('nb');nb.textContent=u;nb.classList.toggle('show',u>0);
-}
+function umu(){document.getElementById('smc').textContent='Master: '+M.length;document.getElementById('mt').textContent=M.length;const ls=localStorage.getItem(KLS);document.getElementById('mls').textContent=ls?new Date(ls).toLocaleString('id-ID'):'Belum pernah';document.getElementById('msr').textContent=localStorage.getItem(KURL)?'Google Sheets':'Lokal (contoh)';const u=P.filter(p=>gs(p).k!=='safe').length;const nb=document.getElementById('nb');nb.textContent=u;nb.classList.toggle('show',u>0)}
 
 function sm(){return[
-  {barcode:'8992761136000',namaProduk:'Indomie Mi Goreng',kategori:'Makanan',satuan:'pcs',shelfLife:270},
-  {barcode:'8886008101053',namaProduk:'Aqua 600ml',kategori:'Minuman',satuan:'botol',shelfLife:365},
-  {barcode:'8998866200318',namaProduk:'Teh Botol Sosro 450ml',kategori:'Minuman',satuan:'botol',shelfLife:180},
-  {barcode:'8996001440100',namaProduk:'Kapal Api Special 165g',kategori:'Minuman',satuan:'sachet',shelfLife:730},
-  {barcode:'8999999035303',namaProduk:'Sari Roti Tawar',kategori:'Makanan',satuan:'pcs',shelfLife:7},
-  {barcode:'8991002101003',namaProduk:'ABC Kecap Manis 275ml',kategori:'Bumbu',satuan:'botol',shelfLife:730},
-  {barcode:'8993182211000',namaProduk:'Skin Aqua UV Moisture 80g',kategori:'Perawatan',satuan:'pcs',shelfLife:1095},
-  {barcode:'8992388441100',namaProduk:'Betadine Antiseptik 30ml',kategori:'Obat',satuan:'botol',shelfLife:1460},
-  {barcode:'8997022220109',namaProduk:'Ultra Milk Coklat 250ml',kategori:'Minuman',satuan:'pcs',shelfLife:180},
-  {barcode:'8996001900208',namaProduk:'Rinso Anti Noda 800g',kategori:'Rumah Tangga',satuan:'pcs',shelfLife:1095},
-  {barcode:'8999999135039',namaProduk:'Yakult 65ml',kategori:'Minuman',satuan:'botol',shelfLife:30},
-  {barcode:'8991102215007',namaProduk:'Minyak Goreng Bimoli 1L',kategori:'Bumbu',satuan:'botol',shelfLife:540},
-  {barcode:'8999999035578',namaProduk:'Tango Wafer Coklat',kategori:'Makanan',satuan:'pcs',shelfLife:365},
-  {barcode:'8886008601074',namaProduk:'Pocari Sweat 500ml',kategori:'Minuman',satuan:'botol',shelfLife:365},
-  {barcode:'8993176611113',namaProduk:'Good Day Cappuccino 250ml',kategori:'Minuman',satuan:'pcs',shelfLife:270}
+  {barcode:'8992761136000',namaProduk:'Indomie Mi Goreng',kategori:'Makanan',satuan:'pcs',shelfLife:270},{barcode:'8886008101053',namaProduk:'Aqua 600ml',kategori:'Minuman',satuan:'botol',shelfLife:365},{barcode:'8998866200318',namaProduk:'Teh Botol Sosro 450ml',kategori:'Minuman',satuan:'botol',shelfLife:180},{barcode:'8996001440100',namaProduk:'Kapal Api Special 165g',kategori:'Minuman',satuan:'sachet',shelfLife:730},{barcode:'8999999035303',namaProduk:'Sari Roti Tawar',kategori:'Makanan',satuan:'pcs',shelfLife:7},{barcode:'8991002101003',namaProduk:'ABC Kecap Manis 275ml',kategori:'Bumbu',satuan:'botol',shelfLife:730},{barcode:'8993182211000',namaProduk:'Skin Aqua UV Moisture 80g',kategori:'Perawatan',satuan:'pcs',shelfLife:1095},{barcode:'8992388441100',namaProduk:'Betadine Antiseptik 30ml',kategori:'Obat',satuan:'botol',shelfLife:1460},{barcode:'8997022220109',namaProduk:'Ultra Milk Coklat 250ml',kategori:'Minuman',satuan:'pcs',shelfLife:180},{barcode:'8996001900208',namaProduk:'Rinso Anti Noda 800g',kategori:'Rumah Tangga',satuan:'pcs',shelfLife:1095},{barcode:'8999999135039',namaProduk:'Yakult 65ml',kategori:'Minuman',satuan:'botol',shelfLife:30},{barcode:'8991102215007',namaProduk:'Minyak Goreng Bimoli 1L',kategori:'Bumbu',satuan:'botol',shelfLife:540},{barcode:'8999999035578',namaProduk:'Tango Wafer Coklat',kategori:'Makanan',satuan:'pcs',shelfLife:365},{barcode:'8886008601074',namaProduk:'Pocari Sweat 500ml',kategori:'Minuman',satuan:'botol',shelfLife:365},{barcode:'8993176611113',namaProduk:'Good Day Cappuccino 250ml',kategori:'Minuman',satuan:'pcs',shelfLife:270}
 ]}
-
 function sd(){return[
-  {id:gid(),barcode:'8992761136000',namaProduk:'Indomie Mi Goreng',kategori:'Makanan',jumlah:48,satuan:'pcs',tanggalMasuk:tp(-150),tanggalExpired:tp(-5),lokasi:'Rak A-1',pic:'Budi',catatan:'Stok utama',createdAt:new Date().toISOString()},
-  {id:gid(),barcode:'8886008101053',namaProduk:'Aqua 600ml',kategori:'Minuman',jumlah:120,satuan:'botol',tanggalMasuk:tp(-90),tanggalExpired:tp(180),lokasi:'Rak B-2',pic:'Sari',catatan:'',createdAt:new Date().toISOString()},
-  {id:gid(),barcode:'8998866200318',namaProduk:'Teh Botol Sosro 450ml',kategori:'Minuman',jumlah:36,satuan:'botol',tanggalMasuk:tp(-45),tanggalExpired:tp(25),lokasi:'Rak B-3',pic:'Budi',catatan:'',createdAt:new Date().toISOString()},
-  {id:gid(),barcode:'8996001440100',namaProduk:'Kapal Api Special 165g',kategori:'Minuman',jumlah:24,satuan:'sachet',tanggalMasuk:tp(-180),tanggalExpired:tp(-20),lokasi:'Rak C-1',pic:'Andi',catatan:'Sudah expired',createdAt:new Date().toISOString()},
-  {id:gid(),barcode:'8999999035303',namaProduk:'Sari Roti Tawar',kategori:'Makanan',jumlah:15,satuan:'pcs',tanggalMasuk:tp(-3),tanggalExpired:tp(5),lokasi:'Rak A-3',pic:'Sari',catatan:'Roti bakeri segar',createdAt:new Date().toISOString()},
-  {id:gid(),barcode:'8991002101003',namaProduk:'ABC Kecap Manis 275ml',kategori:'Bumbu',jumlah:30,satuan:'botol',tanggalMasuk:tp(-120),tanggalExpired:tp(240),lokasi:'Rak D-1',pic:'Dewi',catatan:'',createdAt:new Date().toISOString()},
-  {id:gid(),barcode:'8993182211000',namaProduk:'Skin Aqua UV Moisture 80g',kategori:'Perawatan',jumlah:20,satuan:'pcs',tanggalMasuk:tp(-160),tanggalExpired:tp(550),lokasi:'Rak E-1',pic:'Dewi',catatan:'',createdAt:new Date().toISOString()},
-  {id:gid(),barcode:'8992388441100',namaProduk:'Betadine Antiseptik 30ml',kategori:'Obat',jumlah:12,satuan:'botol',tanggalMasuk:tp(-300),tanggalExpired:tp(60),lokasi:'Rak F-1',pic:'Andi',catatan:'',createdAt:new Date().toISOString()},
-  {id:gid(),barcode:'8997022220109',namaProduk:'Ultra Milk Coklat 250ml',kategori:'Minuman',jumlah:48,satuan:'pcs',tanggalMasuk:tp(-15),tanggalExpired:tp(15),lokasi:'Kulkas 1',pic:'Budi',catatan:'Simpan dingin',createdAt:new Date().toISOString()},
-  {id:gid(),barcode:'8996001900208',namaProduk:'Rinso Anti Noda 800g',kategori:'Rumah Tangga',jumlah:18,satuan:'pcs',tanggalMasuk:tp(-60),tanggalExpired:tp(600),lokasi:'Gudang 2',pic:'Sari',catatan:'',createdAt:new Date().toISOString()},
-  {id:gid(),barcode:'8999999135039',namaProduk:'Yakult 65ml',kategori:'Minuman',jumlah:100,satuan:'botol',tanggalMasuk:tp(-2),tanggalExpired:tp(8),lokasi:'Kulkas 2',pic:'Andi',catatan:'Delivery hari ini',createdAt:new Date().toISOString()},
-  {id:gid(),barcode:'8991102215007',namaProduk:'Minyak Goreng Bimoli 1L',kategori:'Bumbu',jumlah:25,satuan:'botol',tanggalMasuk:tp(-35),tanggalExpired:tp(330),lokasi:'Gudang 1',pic:'Dewi',catatan:'',createdAt:new Date().toISOString()}
+  {id:gid(),barcode:'8992761136000',namaProduk:'Indomie Mi Goreng',kategori:'Makanan',jumlah:48,satuan:'pcs',tanggalMasuk:tp(-150),tanggalExpired:tp(-5),lokasi:'Rak A-1',pic:'Budi',catatan:'Stok utama',createdAt:new Date().toISOString()},{id:gid(),barcode:'8886008101053',namaProduk:'Aqua 600ml',kategori:'Minuman',jumlah:120,satuan:'botol',tanggalMasuk:tp(-90),tanggalExpired:tp(180),lokasi:'Rak B-2',pic:'Sari',catatan:'',createdAt:new Date().toISOString()},{id:gid(),barcode:'8998866200318',namaProduk:'Teh Botol Sosro 450ml',kategori:'Minuman',jumlah:36,satuan:'botol',tanggalMasuk:tp(-45),tanggalExpired:tp(25),lokasi:'Rak B-3',pic:'Budi',catatan:'',createdAt:new Date().toISOString()},{id:gid(),barcode:'8996001440100',namaProduk:'Kapal Api Special 165g',kategori:'Minuman',jumlah:24,satuan:'sachet',tanggalMasuk:tp(-180),tanggalExpired:tp(-20),lokasi:'Rak C-1',pic:'Andi',catatan:'Sudah expired',createdAt:new Date().toISOString()},{id:gid(),barcode:'8999999035303',namaProduk:'Sari Roti Tawar',kategori:'Makanan',jumlah:15,satuan:'pcs',tanggalMasuk:tp(-3),tanggalExpired:tp(5),lokasi:'Rak A-3',pic:'Sari',catatan:'Roti bakeri segar',createdAt:new Date().toISOString()},{id:gid(),barcode:'8991002101003',namaProduk:'ABC Kecap Manis 275ml',kategori:'Bumbu',jumlah:30,satuan:'botol',tanggalMasuk:tp(-120),tanggalExpired:tp(240),lokasi:'Rak D-1',pic:'Dewi',catatan:'',createdAt:new Date().toISOString()},{id:gid(),barcode:'8993182211000',namaProduk:'Skin Aqua UV Moisture 80g',kategori:'Perawatan',jumlah:20,satuan:'pcs',tanggalMasuk:tp(-160),tanggalExpired:tp(550),lokasi:'Rak E-1',pic:'Dewi',catatan:'',createdAt:new Date().toISOString()},{id:gid(),barcode:'8992388441100',namaProduk:'Betadine Antiseptik 30ml',kategori:'Obat',jumlah:12,satuan:'botol',tanggalMasuk:tp(-300),tanggalExpired:tp(60),lokasi:'Rak F-1',pic:'Andi',catatan:'',createdAt:new Date().toISOString()},{id:gid(),barcode:'8997022220109',namaProduk:'Ultra Milk Coklat 250ml',kategori:'Minuman',jumlah:48,satuan:'pcs',tanggalMasuk:tp(-15),tanggalExpired:tp(15),lokasi:'Kulkas 1',pic:'Budi',catatan:'Simpan dingin',createdAt:new Date().toISOString()},{id:gid(),barcode:'8996001900208',namaProduk:'Rinso Anti Noda 800g',kategori:'Rumah Tangga',jumlah:18,satuan:'pcs',tanggalMasuk:tp(-60),tanggalExpired:tp(600),lokasi:'Gudang 2',pic:'Sari',catatan:'',createdAt:new Date().toISOString()},{id:gid(),barcode:'8999999135039',namaProduk:'Yakult 65ml',kategori:'Minuman',jumlah:100,satuan:'botol',tanggalMasuk:tp(-2),tanggalExpired:tp(8),lokasi:'Kulkas 2',pic:'Andi',catatan:'Delivery hari ini',createdAt:new Date().toISOString()},{id:gid(),barcode:'8991102215007',namaProduk:'Minyak Goreng Bimoli 1L',kategori:'Bumbu',jumlah:25,satuan:'botol',tanggalMasuk:tp(-35),tanggalExpired:tp(330),lokasi:'Gudang 1',pic:'Dewi',catatan:'',createdAt:new Date().toISOString()}
 ]}
 
 /* ====== TOAST ====== */
-function toast(m,t='ok'){const ic={ok:'check-circle',er:'times-circle',in:'info-circle'};const e=document.createElement('div');e.className='tt t-'+t;e.innerHTML=`<i class="fas fa-${ic[t]||'info-circle'}"></i><span>${m}</span>`;document.getElementById('ts').appendChild(e);requestAnimationFrame(()=>e.classList.add('show'));setTimeout(()=>{e.classList.remove('show');setTimeout(()=>e.remove(),300)},3200)}
+function toast(m,t='ok'){const ic={ok:'check-circle',er:'times-circle',in:'info-circle'};const e=document.createElement('div');e.className='tt t-'+t;e.innerHTML=`<i class="fas fa-${ic[t]||'info-circle'}"></i><span>${m}</span>`;document.getElementById('ts').appendChild(e);requestAnimationFrame(()=>e.classList.add('show'));setTimeout(()=>{e.classList.remove('show');setTimeout(()=>e.remove(),300)},3500)}
 
 /* ====== NAV ====== */
-function nav(p){
-  if(sR&&p!=='scan')stscan();
-  // Role check
-  const locked=['scan','add','master','settings'];
-  if(AU&&AU.role==='guest'&&locked.includes(p)){toast('Akses ditolak. Login sebagai User atau Admin.','er');return}
-  document.querySelectorAll('.pg').forEach(e=>e.classList.remove('act'));
-  document.getElementById('pg-'+p).classList.add('act');
-  document.querySelectorAll('#nav-links a').forEach(a=>a.classList.toggle('active',a.dataset.p===p));
-  if(p==='dashboard')rd();if(p==='list')rpl();if(p==='master')rmt();if(p==='settings')lsp();
-  document.getElementById('sidebar').classList.remove('open');document.getElementById('so').classList.remove('show');
-}
+function nav(p){if(sR&&p!=='scan')stscan();const locked=['scan','add','master','settings'];if(AU&&AU.role==='guest'&&locked.includes(p)){toast('Akses ditolak. Login sebagai User atau Admin.','er');return}document.querySelectorAll('.pg').forEach(e=>e.classList.remove('act'));document.getElementById('pg-'+p).classList.add('act');document.querySelectorAll('#nl a').forEach(a=>a.classList.toggle('active',a.dataset.p===p));if(p==='dashboard')rd();if(p==='list')rpl();if(p==='master')rmt();if(p==='settings'){lsp();rul()}document.getElementById('sidebar').classList.remove('open');document.getElementById('so').classList.remove('show')}
 function tsb(){document.getElementById('sidebar').classList.toggle('open');document.getElementById('so').classList.toggle('show')}
 
 /* ====== LOOKUP ====== */
 function llm(bc){return M.find(m=>String(m.barcode).trim()===String(bc).trim())||null}
-async function lrm(bc){const u=localStorage.getItem(KMU);if(!u)return null;try{const r=await fetch(u+'?action=lookup&barcode='+encodeURIComponent(bc));const d=await r.json();return d.found?d:null}catch{return null}}
+async function lrm(bc){const u=localStorage.getItem(KURL);if(!u)return null;try{const r=await fetch(u+'?action=lookup&barcode='+encodeURIComponent(bc));const d=await r.json();return d.found?d:null}catch{return null}}
 async function lk(bc){let r=llm(bc);if(!r){const rm=await lrm(bc);if(rm){M.push(rm);svm();r=rm}}return r}
-function ffm(m,pfx){
-  if(!m)return false;
-  const nm=document.getElementById(pfx+'nm'),ct=document.getElementById(pfx+'ct'),st=document.getElementById(pfx+'st');
-  if(nm){nm.value=m.namaProduk||'';nm.classList.add('lf');setTimeout(()=>nm.classList.remove('lf'),500)}
-  if(ct&&m.kategori)for(let o of ct.options)if(o.value===m.kategori){ct.value=m.kategori;break}
-  if(st&&m.satuan)for(let o of st.options)if(o.value===m.satuan){st.value=m.satuan;break}
-  if(m.shelfLife&&m.shelfLife>0){const ex=document.getElementById(pfx+'ex');if(ex&&!ex.value){const d=new Date();d.setDate(d.getDate()+m.shelfLife);ex.value=d.toISOString().split('T')[0]}}
-  return true;
-}
+function ffm(m,pfx){if(!m)return false;const nm=document.getElementById(pfx+'nm'),ct=document.getElementById(pfx+'ct'),st=document.getElementById(pfx+'st');if(nm){nm.value=m.namaProduk||'';nm.classList.add('lf');setTimeout(()=>nm.classList.remove('lf'),500)}if(ct&&m.kategori)for(let o of ct.options)if(o.value===m.kategori){ct.value=m.kategori;break}if(st&&m.satuan)for(let o of st.options)if(o.value===m.satuan){st.value=m.satuan;break}if(m.shelfLife&&m.shelfLife>0){const ex=document.getElementById(pfx+'ex');if(ex&&!ex.value){const d=new Date();d.setDate(d.getDate()+m.shelfLife);ex.value=d.toISOString().split('T')[0]}}return true}
 
 /* ====== SCANNER ====== */
 function sscan(){if(sR)return;if(typeof Quagga==='undefined'){toast('Library scanner tidak tersedia','er');return}document.getElementById('sph').style.display='none';document.getElementById('sln').style.display='block';document.getElementById('bss').style.display='none';document.getElementById('bsp').style.display='inline-flex';Quagga.init({inputStream:{name:'Live',type:'LiveStream',target:document.querySelector('#vp'),constraints:{facingMode:'environment',width:{ideal:640},height:{ideal:480}}},decoder:{readers:['ean_reader','ean_8_reader','code_128_reader','code_39_reader','upc_reader','upc_e_reader']},locate:true,frequency:10},function(err){if(err){toast('Gagal akses kamera. Gunakan HTTPS.','er');rsu();return}Quagga.start();sR=true;toast('Scanner aktif','in')});Quagga.onDetected(function(r){if(r&&r.codeResult&&r.codeResult.code){if(navigator.vibrate)navigator.vibrate(100);hsr(r.codeResult.code);stscan()}})}
 function stscan(){if(!sR)return;Quagga.stop();sR=false;rsu()}
 function rsu(){document.getElementById('sph').style.display='flex';document.getElementById('sln').style.display='none';document.getElementById('bss').style.display='inline-flex';document.getElementById('bsp').style.display='none'}
 
-async function hsr(code){
-  const sr=document.getElementById('sr');
-  sr.innerHTML=`<div style="text-align:center;padding:12px 0"><div class="sp" style="font-size:20px;color:var(--ac);margin-bottom:5px"><i class="fas fa-spinner"></i></div><div style="font-size:11.5px;color:var(--tx2)">Mencari di master...</div><div class="font-display font-bold text-base mt-1" style="font-family:monospace">${code}</div></div>`;
-  const m=await lk(code);
-  ffm(m,'sq-');
-  document.getElementById('sq-bc').value=code;
-  document.getElementById('sqa').style.display='block';
-  // Auto-fill PIC dengan user login
-  if(AU&&AU.role!=='guest')document.getElementById('sq-pic').value=AU.name;
-  if(m){sr.innerHTML=`<div style="text-align:center;padding:8px 0"><div style="width:44px;height:44px;background:var(--acg);border:2px solid var(--ac);border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto 8px"><i class="fas fa-check" style="color:var(--ac);font-size:18px"></i></div><div style="font-size:10px;color:var(--tx2);text-transform:uppercase;letter-spacing:.4px">Ditemukan di Master</div><div class="font-display font-bold text-base mt-1">${m.namaProduk}</div><div style="font-size:11px;color:var(--tx2);margin-top:2px;font-family:monospace">${code}</div><div style="margin-top:5px;font-size:11px;color:var(--tx2)">${m.kategori} · ${m.satuan}${m.shelfLife?' · Shelf life: '+m.shelfLife+' hari':''}</div></div>`}
-  else{sr.innerHTML=`<div style="text-align:center;padding:8px 0"><div style="width:44px;height:44px;background:var(--wng);border:2px solid var(--wn);border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto 8px"><i class="fas fa-question" style="color:var(--wn);font-size:18px"></i></div><div style="font-size:10px;color:var(--tx2);text-transform:uppercase;letter-spacing:.4px">Tidak Ditemukan</div><div class="font-display font-bold text-base mt-1" style="font-family:monospace">${code}</div><div style="margin-top:5px;font-size:11px;color:var(--wn)">Isi nama produk manual</div></div>`;document.getElementById('sq-nm').value='';document.getElementById('sq-ct').selectedIndex=0;document.getElementById('sq-st').selectedIndex=0;document.getElementById('sq-ex').value='';document.getElementById('sq-nm').focus()}
-}
-
+async function hsr(code){const sr=document.getElementById('sr');sr.innerHTML=`<div style="text-align:center;padding:12px 0"><div class="sp" style="font-size:20px;color:var(--ac);margin-bottom:5px"><i class="fas fa-spinner"></i></div><div style="font-size:11.5px;color:var(--tx2)">Mencari di master...</div><div class="font-display font-bold text-base mt-1" style="font-family:monospace">${code}</div></div>`;const m=await lk(code);ffm(m,'sq-');document.getElementById('sq-bc').value=code;document.getElementById('sqa').style.display='block';if(AU&&AU.role!=='guest')document.getElementById('sq-pic').value=AU.name;if(m){sr.innerHTML=`<div style="text-align:center;padding:8px 0"><div style="width:44px;height:44px;background:var(--acg);border:2px solid var(--ac);border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto 8px"><i class="fas fa-check" style="color:var(--ac);font-size:18px"></i></div><div style="font-size:10px;color:var(--tx2);text-transform:uppercase;letter-spacing:.4px">Ditemukan di Master</div><div class="font-display font-bold text-base mt-1">${m.namaProduk}</div><div style="font-size:11px;color:var(--tx2);margin-top:2px;font-family:monospace">${code}</div><div style="margin-top:5px;font-size:11px;color:var(--tx2)">${m.kategori} · ${m.satuan}${m.shelfLife?' · Shelf life: '+m.shelfLife+' hari':''}</div></div>`}else{sr.innerHTML=`<div style="text-align:center;padding:8px 0"><div style="width:44px;height:44px;background:var(--wng);border:2px solid var(--wn);border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto 8px"><i class="fas fa-question" style="color:var(--wn);font-size:18px"></i></div><div style="font-size:10px;color:var(--tx2);text-transform:uppercase;letter-spacing:.4px">Tidak Ditemukan</div><div class="font-display font-bold text-base mt-1" style="font-family:monospace">${code}</div><div style="margin-top:5px;font-size:11px;color:var(--wn)">Isi nama produk manual</div></div>`;document.getElementById('sq-nm').value='';document.getElementById('sq-ct').selectedIndex=0;document.getElementById('sq-st').selectedIndex=0;document.getElementById('sq-ex').value='';document.getElementById('sq-nm').focus()}}
 async function lmbc(){const i=document.getElementById('mbc'),c=i.value.trim();if(!c){toast('Masukkan barcode','er');i.focus();return}await hsr(c);i.value=''}
 async function lff(){const c=document.getElementById('f-bc').value.trim();if(!c){toast('Masukkan barcode dulu','er');document.getElementById('f-bc').focus();return}const nm=document.getElementById('f-nm');nm.value='Mencari...';nm.style.opacity='.5';const m=await lk(c);ffm(m,'f-');nm.style.opacity='1';if(m){toast('Ditemukan: '+m.namaProduk);document.getElementById('f-lk').focus()}else{nm.value='';toast('Tidak ditemukan, isi manual','in');nm.focus()}}
 function rsf(){document.getElementById('sr').innerHTML='<div class="es" style="padding:20px"><i class="fas fa-barcode"></i><p style="margin-top:4px;font-size:11px">Scan atau ketik barcode</p></div>';document.getElementById('sqa').style.display='none'}
+function qas(){if(!canW()){toast('Akses ditolak','er');return}const bc=document.getElementById('sq-bc').value.trim(),nm=document.getElementById('sq-nm').value.trim(),ct=document.getElementById('sq-ct').value,st=document.getElementById('sq-st').value,qt=parseInt(document.getElementById('sq-qt').value)||1,pic=document.getElementById('sq-pic').value.trim(),lk=document.getElementById('sq-lk').value.trim(),ex=document.getElementById('sq-ex').value;if(!nm){toast('Nama wajib','er');document.getElementById('sq-nm').focus();return}if(!ex){toast('Tanggal expired wajib','er');document.getElementById('sq-ex').focus();return}const p={id:gid(),barcode:bc,namaProduk:nm,kategori:ct||'Lainnya',jumlah:qt,satuan:st,tanggalMasuk:ts(),tanggalExpired:ex,lokasi:lk||'-',pic:pic||(AU?AU.name:''),catatan:'',createdAt:new Date().toISOString()};P.unshift(p);sp();ptw(p);toast('"'+nm+'" ditambahkan');rsf()}
 
-function qas(){
-  if(!canWrite()){toast('Akses ditolak','er');return}
-  const bc=document.getElementById('sq-bc').value.trim(),nm=document.getElementById('sq-nm').value.trim(),ct=document.getElementById('sq-ct').value,st=document.getElementById('sq-st').value,qt=parseInt(document.getElementById('sq-qt').value)||1,pic=document.getElementById('sq-pic').value.trim(),lk=document.getElementById('sq-lk').value.trim(),ex=document.getElementById('sq-ex').value;
-  if(!nm){toast('Nama wajib diisi','er');document.getElementById('sq-nm').focus();return}
-  if(!ex){toast('Tanggal expired wajib','er');document.getElementById('sq-ex').focus();return}
-  const p={id:gid(),barcode:bc,namaProduk:nm,kategori:ct||'Lainnya',jumlah:qt,satuan:st,tanggalMasuk:ts(),tanggalExpired:ex,lokasi:lk||'-',pic:pic||(AU?AU.name:''),catatan:'',createdAt:new Date().toISOString()};
-  P.unshift(p);sp();ptw(p);toast('"'+nm+'" ditambahkan');rsf();
-}
-
-/* ====== TAMBAH PRODUK ====== */
-function ap(){
-  if(!canWrite()){toast('Akses ditolak','er');return}
-  const bc=document.getElementById('f-bc').value.trim()||'-',nm=document.getElementById('f-nm').value.trim(),ct=document.getElementById('f-ct').value,qt=parseInt(document.getElementById('f-qt').value)||1,st=document.getElementById('f-st').value,pic=document.getElementById('f-pic').value.trim(),lk=document.getElementById('f-lk').value.trim()||'-',ms=document.getElementById('f-ms').value,ex=document.getElementById('f-ex').value,nt=document.getElementById('f-nt').value.trim();
-  if(!nm){toast('Nama wajib','er');document.getElementById('f-nm').focus();return}
-  if(!ct){toast('Pilih kategori','er');return}
-  if(!ex){toast('Tanggal expired wajib','er');document.getElementById('f-ex').focus();return}
-  const p={id:gid(),barcode:bc,namaProduk:nm,kategori:ct,jumlah:qt,satuan:st,tanggalMasuk:ms||ts(),tanggalExpired:ex,lokasi:lk,pic:pic||(AU?AU.name:''),catatan:nt,createdAt:new Date().toISOString()};
-  P.unshift(p);sp();ptw(p);toast('"'+nm+'" ditambahkan');clf();
-}
+/* ====== TAMBAH ====== */
+function ap(){if(!canW()){toast('Akses ditolak','er');return}const bc=document.getElementById('f-bc').value.trim()||'-',nm=document.getElementById('f-nm').value.trim(),ct=document.getElementById('f-ct').value,qt=parseInt(document.getElementById('f-qt').value)||1,st=document.getElementById('f-st').value,pic=document.getElementById('f-pic').value.trim(),lk=document.getElementById('f-lk').value.trim()||'-',ms=document.getElementById('f-ms').value,ex=document.getElementById('f-ex').value,nt=document.getElementById('f-nt').value.trim();if(!nm){toast('Nama wajib','er');document.getElementById('f-nm').focus();return}if(!ct){toast('Pilih kategori','er');return}if(!ex){toast('Tanggal expired wajib','er');document.getElementById('f-ex').focus();return}const p={id:gid(),barcode:bc,namaProduk:nm,kategori:ct,jumlah:qt,satuan:st,tanggalMasuk:ms||ts(),tanggalExpired:ex,lokasi:lk,pic:pic||(AU?AU.name:''),catatan:nt,createdAt:new Date().toISOString()};P.unshift(p);sp();ptw(p);toast('"'+nm+'" ditambahkan');clf()}
 function clf(){['f-bc','f-nm','f-nt','f-lk','f-pic'].forEach(i=>document.getElementById(i).value='');document.getElementById('f-ct').selectedIndex=0;document.getElementById('f-qt').value='1';document.getElementById('f-st').selectedIndex=0;document.getElementById('f-ms').value=ts();document.getElementById('f-ex').value=''}
 
 /* ====== DASHBOARD ====== */
-function rd(){
-  document.getElementById('dd').textContent=new Date().toLocaleDateString('id-ID',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
-  let t=P.length,ex=0,wn=0,sa=0;P.forEach(p=>{const s=gs(p);if(s.k==='danger')ex++;else if(s.k==='warn')wn++;else sa++});
-  document.getElementById('stats').innerHTML=`
-    <div class="sc b"><div class="flex items-center justify-between mb-1"><span style="font-size:10px;color:var(--tx2);font-weight:600;text-transform:uppercase;letter-spacing:.4px">Total Produk</span><div style="width:30px;height:30px;background:var(--blg);border-radius:8px;display:flex;align-items:center;justify-content:center"><i class="fas fa-boxes-stacked" style="color:var(--bl);font-size:11px"></i></div></div><div class="font-display font-bold text-2xl">${t}</div><div style="font-size:10.5px;color:var(--tx2);margin-top:1px">${P.reduce((s,p)=>s+p.jumlah,0)} unit</div></div>
-    <div class="sc r"><div class="flex items-center justify-between mb-1"><span style="font-size:10px;color:var(--tx2);font-weight:600;text-transform:uppercase;letter-spacing:.4px">Expired</span><div style="width:30px;height:30px;background:var(--dgg);border-radius:8px;display:flex;align-items:center;justify-content:center"><i class="fas fa-skull-crossbones" style="color:var(--dg);font-size:11px"></i></div></div><div class="font-display font-bold text-2xl" style="color:var(--dg)">${ex}</div><div style="font-size:10.5px;color:var(--tx2);margin-top:1px">Segera tarik</div></div>
-    <div class="sc y"><div class="flex items-center justify-between mb-1"><span style="font-size:10px;color:var(--tx2);font-weight:600;text-transform:uppercase;letter-spacing:.4px">Hampir Expired</span><div style="width:30px;height:30px;background:var(--wng);border-radius:8px;display:flex;align-items:center;justify-content:center"><i class="fas fa-clock" style="color:var(--wn);font-size:11px"></i></div></div><div class="font-display font-bold text-2xl" style="color:var(--wn)">${wn}</div><div style="font-size:10.5px;color:var(--tx2);margin-top:1px">Dalam ${DW} hari</div></div>
-    <div class="sc g"><div class="flex items-center justify-between mb-1"><span style="font-size:10px;color:var(--tx2);font-weight:600;text-transform:uppercase;letter-spacing:.4px">Aman</span><div style="width:30px;height:30px;background:var(--acg);border-radius:8px;display:flex;align-items:center;justify-content:center"><i class="fas fa-shield-halved" style="color:var(--ac);font-size:11px"></i></div></div><div class="font-display font-bold text-2xl" style="color:var(--ac)">${sa}</div><div style="font-size:10.5px;color:var(--tx2);margin-top:1px">> ${DW} hari</div></div>`;
-  rc(ex,wn,sa);
-  const als=P.filter(p=>gs(p).k!=='safe').sort((a,b)=>new Date(a.tanggalExpired)-new Date(b.tanggalExpired)).slice(0,5);
-  document.getElementById('al').innerHTML=als.length?als.map(p=>{const s=gs(p);return`<div class="flex items-center gap-2 py-1.5" style="border-bottom:1px solid var(--bdr)"><span class="gd ${s.c}"></span><div class="flex-1 min-w-0"><div style="font-size:12px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${p.namaProduk}</div><div style="font-size:10px;color:var(--tx2)">${s.d<0?'Expired '+Math.abs(s.d)+' hari lalu':s.l} · ${p.pic||'-'} · ${fd(p.tanggalExpired)}</div></div><span class="bd ${s.c}">${s.k==='danger'?'Exp':s.d+'h'}</span></div>`}).join(''):'<div class="es" style="padding:20px"><i class="fas fa-check-circle" style="font-size:26px;color:var(--ac)"></i><p style="margin-top:3px;font-size:11px">Tidak ada peringatan</p></div>';
-  const rcs=[...P].sort((a,b)=>new Date(b.createdAt)-new Date(a.createdAt)).slice(0,5);
-  document.getElementById('rc').innerHTML=rcs.map(p=>{const s=gs(p);return`<div class="flex items-center gap-2 py-1.5" style="border-bottom:1px solid var(--bdr)"><div style="width:26px;height:26px;background:var(--bg);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--tx2)"><i class="fas fa-box"></i></div><div class="flex-1 min-w-0"><div style="font-size:12px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${p.namaProduk}</div><div style="font-size:10px;color:var(--tx2)">${p.kategori} · ${p.jumlah} ${p.satuan} · ${p.pic||'-'}</div></div><span class="bd ${s.c}" style="font-size:9px">${s.k==='danger'?'Exp':s.k==='warn'?s.d+'h':'OK'}</span></div>`}).join('');
-  umu();
-}
+function rd(){document.getElementById('dd').textContent=new Date().toLocaleDateString('id-ID',{weekday:'long',day:'numeric',month:'long',year:'numeric'});let t=P.length,ex=0,wn=0,sa=0;P.forEach(p=>{const s=gs(p);if(s.k==='danger')ex++;else if(s.k==='warn')wn++;else sa++});document.getElementById('stats').innerHTML=`<div class="sc b"><div class="flex items-center justify-between mb-1"><span style="font-size:10px;color:var(--tx2);font-weight:600;text-transform:uppercase;letter-spacing:.4px">Total Produk</span><div style="width:30px;height:30px;background:var(--blg);border-radius:8px;display:flex;align-items:center;justify-content:center"><i class="fas fa-boxes-stacked" style="color:var(--bl);font-size:11px"></i></div></div><div class="font-display font-bold text-2xl">${t}</div><div style="font-size:10.5px;color:var(--tx2);margin-top:1px">${P.reduce((s,p)=>s+p.jumlah,0)} unit</div></div><div class="sc r"><div class="flex items-center justify-between mb-1"><span style="font-size:10px;color:var(--tx2);font-weight:600;text-transform:uppercase;letter-spacing:.4px">Expired</span><div style="width:30px;height:30px;background:var(--dgg);border-radius:8px;display:flex;align-items:center;justify-content:center"><i class="fas fa-skull-crossbones" style="color:var(--dg);font-size:11px"></i></div></div><div class="font-display font-bold text-2xl" style="color:var(--dg)">${ex}</div><div style="font-size:10.5px;color:var(--tx2);margin-top:1px">Segera tarik</div></div><div class="sc y"><div class="flex items-center justify-between mb-1"><span style="font-size:10px;color:var(--tx2);font-weight:600;text-transform:uppercase;letter-spacing:.4px">Hampir Expired</span><div style="width:30px;height:30px;background:var(--wng);border-radius:8px;display:flex;align-items:center;justify-content:center"><i class="fas fa-clock" style="color:var(--wn);font-size:11px"></i></div></div><div class="font-display font-bold text-2xl" style="color:var(--wn)">${wn}</div><div style="font-size:10.5px;color:var(--tx2);margin-top:1px">Dalam ${DW} hari</div></div><div class="sc g"><div class="flex items-center justify-between mb-1"><span style="font-size:10px;color:var(--tx2);font-weight:600;text-transform:uppercase;letter-spacing:.4px">Aman</span><div style="width:30px;height:30px;background:var(--acg);border-radius:8px;display:flex;align-items:center;justify-content:center"><i class="fas fa-shield-halved" style="color:var(--ac);font-size:11px"></i></div></div><div class="font-display font-bold text-2xl" style="color:var(--ac)">${sa}</div><div style="font-size:10.5px;color:var(--tx2);margin-top:1px">> ${DW} hari</div></div>`;rc(ex,wn,sa);const als=P.filter(p=>gs(p).k!=='safe').sort((a,b)=>new Date(a.tanggalExpired)-new Date(b.tanggalExpired)).slice(0,5);document.getElementById('al').innerHTML=als.length?als.map(p=>{const s=gs(p);return`<div class="flex items-center gap-2 py-1.5" style="border-bottom:1px solid var(--bdr)"><span class="gd ${s.c}"></span><div class="flex-1 min-w-0"><div style="font-size:12px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${p.namaProduk}</div><div style="font-size:10px;color:var(--tx2)">${s.d<0?'Expired '+Math.abs(s.d)+' hari lalu':s.l} · ${p.pic||'-'} · ${fd(p.tanggalExpired)}</div></div><span class="bd ${s.c}">${s.k==='danger'?'Exp':s.d+'h'}</span></div>`}).join(''):'<div class="es" style="padding:20px"><i class="fas fa-check-circle" style="font-size:26px;color:var(--ac)"></i><p style="margin-top:3px;font-size:11px">Tidak ada peringatan</p></div>';const rcs=[...P].sort((a,b)=>new Date(b.createdAt)-new Date(a.createdAt)).slice(0,5);document.getElementById('rc').innerHTML=rcs.map(p=>{const s=gs(p);return`<div class="flex items-center gap-2 py-1.5" style="border-bottom:1px solid var(--bdr)"><div style="width:26px;height:26px;background:var(--bg);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--tx2)"><i class="fas fa-box"></i></div><div class="flex-1 min-w-0"><div style="font-size:12px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${p.namaProduk}</div><div style="font-size:10px;color:var(--tx2)">${p.kategori} · ${p.jumlah} ${p.satuan} · ${p.pic||'-'}</div></div><span class="bd ${s.c}" style="font-size:9px">${s.k==='danger'?'Exp':s.k==='warn'?s.d+'h':'OK'}</span></div>`}).join('');umu()}
+function rc(ex,wn,sa){const x=document.getElementById('cd').getContext('2d');if(cD)cD.destroy();cD=new Chart(x,{type:'doughnut',data:{labels:['Expired','Hampir Expired','Aman'],datasets:[{data:[ex,wn,sa],backgroundColor:['#ff4757','#ffa502','#00e5a0'],borderWidth:0,spacing:3}]},options:{responsive:true,cutout:'72%',plugins:{legend:{position:'bottom',labels:{color:'#6b7fa0',padding:10,font:{size:10,family:'DM Sans'},usePointStyle:true,pointStyleWidth:6}}}}});const ms=[];const n=new Date();for(let i=-1;i<=5;i++){const m=new Date(n.getFullYear(),n.getMonth()+i,1);ms.push({l:m.toLocaleDateString('id-ID',{month:'short',year:'2-digit'}),s:new Date(m.getFullYear(),m.getMonth(),1),e:new Date(m.getFullYear(),m.getMonth()+1,0)})}const cn=ms.map(m=>P.filter(p=>{const e=new Date(p.tanggalExpired);return e>=m.s&&e<=m.e}).length);const y=document.getElementById('cb2').getContext('2d');if(cB)cB.destroy();cB=new Chart(y,{type:'bar',data:{labels:ms.map(m=>m.l),datasets:[{data:cn,backgroundColor:ms.map((_,i)=>i===0?'#ff4757':i===1?'#ffa502':'#00e5a0'),borderRadius:5,barThickness:24}]},options:{responsive:true,scales:{x:{grid:{display:false},ticks:{color:'#6b7fa0',font:{size:10}}},y:{beginAtZero:true,grid:{color:'rgba(26,42,69,.5)'},ticks:{color:'#6b7fa0',font:{size:10},stepSize:1}}},plugins:{legend:{display:false}}}})}
 
-function rc(ex,wn,sa){
-  const x=document.getElementById('cd').getContext('2d');if(cD)cD.destroy();
-  cD=new Chart(x,{type:'doughnut',data:{labels:['Expired','Hampir Expired','Aman'],datasets:[{data:[ex,wn,sa],backgroundColor:['#ff4757','#ffa502','#00e5a0'],borderWidth:0,spacing:3}]},options:{responsive:true,cutout:'72%',plugins:{legend:{position:'bottom',labels:{color:'#6b7fa0',padding:10,font:{size:10,family:'DM Sans'},usePointStyle:true,pointStyleWidth:6}}}}});
-  const ms=[];const n=new Date();for(let i=-1;i<=5;i++){const m=new Date(n.getFullYear(),n.getMonth()+i,1);ms.push({l:m.toLocaleDateString('id-ID',{month:'short',year:'2-digit'}),s:new Date(m.getFullYear(),m.getMonth(),1),e:new Date(m.getFullYear(),m.getMonth()+1,0)})}
-  const cn=ms.map(m=>P.filter(p=>{const e=new Date(p.tanggalExpired);return e>=m.s&&e<=m.e}).length);
-  const y=document.getElementById('cb2').getContext('2d');if(cB)cB.destroy();
-  cB=new Chart(y,{type:'bar',data:{labels:ms.map(m=>m.l),datasets:[{data:cn,backgroundColor:ms.map((_,i)=>i===0?'#ff4757':i===1?'#ffa502':'#00e5a0'),borderRadius:5,barThickness:24}]},options:{responsive:true,scales:{x:{grid:{display:false},ticks:{color:'#6b7fa0',font:{size:10}}},y:{beginAtZero:true,grid:{color:'rgba(26,42,69,.5)'},ticks:{color:'#6b7fa0',font:{size:10},stepSize:1}}},plugins:{legend:{display:false}}}});
-}
-
-/* ====== DAFTAR PRODUK ====== */
+/* ====== DAFTAR ====== */
 function sf(f){cF=f;document.querySelectorAll('.ft').forEach(t=>t.classList.toggle('active',t.dataset.f===f));rpl()}
-function rpl(){
-  const q=(document.getElementById('si').value||'').toLowerCase();
-  let fl=P.filter(p=>{const ms=!q||p.namaProduk.toLowerCase().includes(q)||p.barcode.toLowerCase().includes(q)||(p.pic||'').toLowerCase().includes(q);const s=gs(p);return ms&&(cF==='all'||s.k===cF)});
-  const od={danger:0,warn:1,safe:2};fl.sort((a,b)=>{const sa=gs(a),sb=gs(b);if(od[sa.k]!==od[sb.k])return od[sa.k]-od[sb.k];return new Date(a.tanggalExpired)-new Date(b.tanggalExpired)});
-  const w=document.getElementById('ptw');
-  if(!fl.length){w.innerHTML=`<div class="es"><i class="fas fa-box-open"></i><p style="margin-top:4px;font-size:11px">${q||cF!=='all'?'Tidak ada yang cocok':'Belum ada produk'}</p></div>`;document.getElementById('pgi').textContent='';return}
-  const pp=20,tp=Math.ceil(fl.length/pp);let pg=1;try{pg=parseInt(new URLSearchParams(location.search).get('pg'))||1}catch{}if(pg<1)pg=1;if(pg>tp)pg=tp;
-  const st=(pg-1)*pp,it=fl.slice(st,st+pp);
-  const ww=canWrite();
-  let h=`<table><thead><tr><th>Produk</th><th>Barcode</th><th>Kategori</th><th>PIC</th><th>Qty</th><th>Lokasi</th><th>Expired</th><th>Status</th>${ww?'<th>Aksi</th>':''}</tr></thead><tbody>`;
-  it.forEach(p=>{const s=gs(p);const pr=s.d<0?100:Math.min(100,Math.max(0,((365-s.d)/365)*100));const pc=s.k==='danger'?'var(--dg)':s.k==='warn'?'var(--wn)':'var(--ac)';h+=`<tr><td><div style="font-weight:600;max-width:140px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${p.namaProduk}</div></td><td style="font-family:monospace;font-size:11px;color:var(--tx2)">${p.barcode}</td><td>${p.kategori}</td><td><span style="font-size:11.5px;color:var(--ac)">${p.pic||'-'}</span></td><td style="font-weight:600">${p.jumlah} ${p.satuan}</td><td>${p.lokasi}</td><td style="white-space:nowrap">${fd(p.tanggalExpired)}<div class="pb" style="margin-top:2px"><div class="f" style="width:${pr}%;background:${pc}"></div></div></td><td><span class="bd ${s.c}">${s.l}</span></td>${ww?`<td><div class="flex gap-1"><button class="bt bt-o bt-s" onclick="oe('${p.id}')" title="Edit"><i class="fas fa-pen" style="font-size:9px"></i></button><button class="bt bt-s" style="background:var(--dgg);color:var(--dg);border:1px solid rgba(255,71,87,.2)" onclick="cdel('${p.id}')" title="Hapus"><i class="fas fa-trash" style="font-size:9px"></i></button></div></td>`:''}</tr>`});
-  h+='</tbody></table>';w.innerHTML=h;
-  const gi=document.getElementById('pgi');
-  if(tp<=1)gi.innerHTML=`<span>${fl.length} produk</span>`;
-  else{let x=`<span>${st+1}-${Math.min(st+pp,fl.length)} dari ${fl.length}</span><div class="flex gap-1">`;for(let i=1;i<=tp;i++)x+=`<button class="bt bt-s ${i===pg?'bt-p':'bt-o'}" onclick="gp(${i})" style="min-width:26px;justify-content:center">${i}</button>`;gi.innerHTML=x+'</div>'}
-}
+function rpl(){const q=(document.getElementById('si').value||'').toLowerCase();let fl=P.filter(p=>{const ms=!q||p.namaProduk.toLowerCase().includes(q)||p.barcode.toLowerCase().includes(q)||(p.pic||'').toLowerCase().includes(q);const s=gs(p);return ms&&(cF==='all'||s.k===cF)});const od={danger:0,warn:1,safe:2};fl.sort((a,b)=>{const sa=gs(a),sb=gs(b);if(od[sa.k]!==od[sb.k])return od[sa.k]-od[sb.k];return new Date(a.tanggalExpired)-new Date(b.tanggalExpired)});const w=document.getElementById('ptw');if(!fl.length){w.innerHTML=`<div class="es"><i class="fas fa-box-open"></i><p style="margin-top:4px;font-size:11px">${q||cF!=='all'?'Tidak ada yang cocok':'Belum ada produk'}</p></div>`;document.getElementById('pgi').textContent='';return}const pp=20,tp=Math.ceil(fl.length/pp);let pg=1;try{pg=parseInt(new URLSearchParams(location.search).get('pg'))||1}catch{}if(pg<1)pg=1;if(pg>tp)pg=tp;const st=(pg-1)*pp,it=fl.slice(st,st+pp);const ww=canW();let h=`<table><thead><tr><th>Produk</th><th>Barcode</th><th>Kategori</th><th>PIC</th><th>Qty</th><th>Lokasi</th><th>Expired</th><th>Status</th>${ww?'<th>Aksi</th>':''}</tr></thead><tbody>`;it.forEach(p=>{const s=gs(p);const pr=s.d<0?100:Math.min(100,Math.max(0,((365-s.d)/365)*100));const pc=s.k==='danger'?'var(--dg)':s.k==='warn'?'var(--wn)':'var(--ac)';h+=`<tr><td><div style="font-weight:600;max-width:130px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${p.namaProduk}</div></td><td style="font-family:monospace;font-size:11px;color:var(--tx2)">${p.barcode}</td><td>${p.kategori}</td><td style="color:var(--ac);font-size:11.5px">${p.pic||'-'}</td><td style="font-weight:600">${p.jumlah} ${p.satuan}</td><td>${p.lokasi}</td><td style="white-space:nowrap">${fd(p.tanggalExpired)}<div class="pb" style="margin-top:2px"><div class="f" style="width:${pr}%;background:${pc}"></div></div></td><td><span class="bd ${s.c}">${s.l}</span></td>${ww?`<td><div class="flex gap-1"><button class="bt bt-o bt-s" onclick="oe('${p.id}')"><i class="fas fa-pen" style="font-size:9px"></i></button><button class="bt bt-s" style="background:var(--dgg);color:var(--dg);border:1px solid rgba(255,71,87,.2)" onclick="cdel('${p.id}')"><i class="fas fa-trash" style="font-size:9px"></i></button></div></td>`:''}</tr>`});h+='</tbody></table>';w.innerHTML=h;const gi=document.getElementById('pgi');if(tp<=1)gi.innerHTML=`<span>${fl.length} produk</span>`;else{let x=`<span>${st+1}-${Math.min(st+pp,fl.length)} dari ${fl.length}</span><div class="flex gap-1">`;for(let i=1;i<=tp;i++)x+=`<button class="bt bt-s ${i===pg?'bt-p':'bt-o'}" onclick="gp(${i})" style="min-width:26px;justify-content:center">${i}</button>`;gi.innerHTML=x+'</div>'}}
 function gp(p){const u=new URL(location);u.searchParams.set('pg',p);history.replaceState({},'',u);rpl();window.scrollTo(0,0)}
 
 /* ====== EDIT & HAPUS ====== */
-function oe(id){const p=P.find(x=>x.id===id);if(!p)return;if(!canWrite()){toast('Akses ditolak','er');return}document.getElementById('e-id').value=p.id;document.getElementById('e-bc').value=p.barcode;document.getElementById('e-nm').value=p.namaProduk;document.getElementById('e-ct').value=p.kategori;document.getElementById('e-qt').value=p.jumlah;document.getElementById('e-st').value=p.satuan;document.getElementById('e-pic').value=p.pic||'';document.getElementById('e-lk').value=p.lokasi;document.getElementById('e-ms').value=p.tanggalMasuk;document.getElementById('e-ex').value=p.tanggalExpired;document.getElementById('e-nt').value=p.catatan||'';document.getElementById('m-e').classList.add('show')}
+function oe(id){const p=P.find(x=>x.id===id);if(!p||!canW()){toast('Akses ditolak','er');return}document.getElementById('e-id').value=p.id;document.getElementById('e-bc').value=p.barcode;document.getElementById('e-nm').value=p.namaProduk;document.getElementById('e-ct').value=p.kategori;document.getElementById('e-qt').value=p.jumlah;document.getElementById('e-st').value=p.satuan;document.getElementById('e-pic').value=p.pic||'';document.getElementById('e-lk').value=p.lokasi;document.getElementById('e-ms').value=p.tanggalMasuk;document.getElementById('e-ex').value=p.tanggalExpired;document.getElementById('e-nt').value=p.catatan||'';document.getElementById('m-e').classList.add('show')}
 function se(){const id=document.getElementById('e-id').value,p=P.find(x=>x.id===id);if(!p)return;p.barcode=document.getElementById('e-bc').value.trim()||'-';p.namaProduk=document.getElementById('e-nm').value.trim();p.kategori=document.getElementById('e-ct').value;p.jumlah=parseInt(document.getElementById('e-qt').value)||1;p.satuan=document.getElementById('e-st').value;p.pic=document.getElementById('e-pic').value.trim();p.lokasi=document.getElementById('e-lk').value.trim()||'-';p.tanggalMasuk=document.getElementById('e-ms').value;p.tanggalExpired=document.getElementById('e-ex').value;p.catatan=document.getElementById('e-nt').value.trim();if(!p.namaProduk){toast('Nama wajib','er');return}if(!p.tanggalExpired){toast('Expired wajib','er');return}sp();cm('m-e');toast('Diperbarui');rpl()}
-function cdel(id){if(!canWrite()){toast('Akses ditolak','er');return}const p=P.find(x=>x.id===id);if(!p)return;document.getElementById('ctt').textContent='Hapus Produk';document.getElementById('cmsg').textContent=`Yakin hapus "${p.namaProduk}"?`;document.getElementById('cyes').onclick=()=>{P=P.filter(x=>x.id!==id);sp();cm('m-c');toast('Dihapus');rpl()};document.getElementById('m-c').classList.add('show')}
-function cca(t){if(!isAdmin()){toast('Hanya admin','er');return}if(t==='p'){document.getElementById('ctt').textContent='Hapus Semua Produk';document.getElementById('cmsg').textContent=`Hapus ${P.length} data produk?`;document.getElementById('cyes').onclick=()=>{P=[];sp();cm('m-c');toast('Semua data dihapus')}}else{document.getElementById('ctt').textContent='Hapus Master Lokal';document.getElementById('cmsg').textContent=`Hapus ${M.length} data master?`;document.getElementById('cyes').onclick=()=>{M=[];svm();cm('m-c');toast('Master dihapus');rmt()}}document.getElementById('m-c').classList.add('show')}
+function cdel(id){if(!canW()){toast('Akses ditolak','er');return}const p=P.find(x=>x.id===id);if(!p)return;document.getElementById('ctt').textContent='Hapus Produk';document.getElementById('cmsg').textContent=`Yakin hapus "${p.namaProduk}"?`;document.getElementById('cyes').onclick=()=>{P=P.filter(x=>x.id!==id);sp();cm('m-c');toast('Dihapus');rpl()};document.getElementById('m-c').classList.add('show')}
+function cca(t){if(!isAd()){toast('Hanya admin','er');return}if(t==='p'){document.getElementById('ctt').textContent='Hapus Semua Produk';document.getElementById('cmsg').textContent=`Hapus ${P.length} data produk?`;document.getElementById('cyes').onclick=()=>{P=[];sp();cm('m-c');toast('Data dihapus')}}else if(t==='m'){document.getElementById('ctt').textContent='Hapus Master Lokal';document.getElementById('cmsg').textContent=`Hapus ${M.length} data master?`;document.getElementById('cyes').onclick=()=>{M=[];svm();cm('m-c');toast('Master dihapus');rmt()}}else if(t==='u'){document.getElementById('ctt').textContent='Reset User ke Default';document.getElementById('cmsg').textContent='Hapus semua user dan kembalikan ke default (admin/admin123)? Anda akan logout.';document.getElementById('cyes').onclick=()=>{saveUsers(JSON.parse(JSON.stringify(DEFAULT_USERS)));cm('m-c');doLogout();toast('User direset ke default')}}document.getElementById('m-c').classList.add('show')}
 function cm(id){document.getElementById(id).classList.remove('show')}
 document.querySelectorAll('.mo').forEach(m=>{m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('show')})});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('.mo.show').forEach(m=>m.classList.remove('show'))});
 
 /* ====== MASTER ====== */
-function rmt(){
-  if(!canWrite()&&!isAdmin()){document.getElementById('mtw').innerHTML='<div class="es"><i class="fas fa-lock"></i><p style="margin-top:4px;font-size:11px">Akses terbatas</p></div>';umu();return}
-  const q=(document.getElementById('msq')?.value||'').toLowerCase();
-  let fl=M.filter(m=>!q||m.namaProduk.toLowerCase().includes(q)||m.barcode.toLowerCase().includes(q));
-  const w=document.getElementById('mtw');
-  if(!fl.length){w.innerHTML=`<div class="es"><i class="fas fa-database"></i><p style="margin-top:4px;font-size:11px">${M.length?'Tidak ditemukan':'Master kosong'}</p></div>`;umu();return}
-  let h=`<table><thead><tr><th>Barcode</th><th>Nama</th><th>Kategori</th><th>Satuan</th><th>Shelf Life</th><th>Aksi</th></tr></thead><tbody>`;
-  fl.forEach(m=>{h+=`<tr><td style="font-family:monospace;font-size:11px">${m.barcode}</td><td style="font-weight:600">${m.namaProduk}</td><td>${m.kategori||'-'}</td><td>${m.satuan}</td><td>${m.shelfLife?m.shelfLife+' hari':'-'}</td><td><div class="flex gap-1"><button class="bt bt-o bt-s" onclick="umtf('${m.barcode}')" title="Pakai"><i class="fas fa-arrow-right" style="font-size:9px"></i></button><button class="bt bt-s" style="background:var(--dgg);color:var(--dg);border:1px solid rgba(255,71,87,.2)" onclick="dml('${m.barcode}')"><i class="fas fa-trash" style="font-size:9px"></i></button></div></td></tr>`});
-  w.innerHTML=h+'</tbody></table>';umu();
-}
+function rmt(){if(!canW()&&!isAd()){document.getElementById('mtw').innerHTML='<div class="es"><i class="fas fa-lock"></i><p style="margin-top:4px;font-size:11px">Akses terbatas</p></div>';umu();return}const q=(document.getElementById('msq')?.value||'').toLowerCase();let fl=M.filter(m=>!q||m.namaProduk.toLowerCase().includes(q)||m.barcode.toLowerCase().includes(q));const w=document.getElementById('mtw');if(!fl.length){w.innerHTML=`<div class="es"><i class="fas fa-database"></i><p style="margin-top:4px;font-size:11px">${M.length?'Tidak ditemukan':'Master kosong'}</p></div>`;umu();return}let h=`<table><thead><tr><th>Barcode</th><th>Nama</th><th>Kategori</th><th>Satuan</th><th>Shelf Life</th><th>Aksi</th></tr></thead><tbody>`;fl.forEach(m=>{h+=`<tr><td style="font-family:monospace;font-size:11px">${m.barcode}</td><td style="font-weight:600">${m.namaProduk}</td><td>${m.kategori||'-'}</td><td>${m.satuan}</td><td>${m.shelfLife?m.shelfLife+' hari':'-'}</td><td><div class="flex gap-1"><button class="bt bt-o bt-s" onclick="umtf('${m.barcode}')"><i class="fas fa-arrow-right" style="font-size:9px"></i></button><button class="bt bt-s" style="background:var(--dgg);color:var(--dg);border:1px solid rgba(255,71,87,.2)" onclick="dml('${m.barcode}')"><i class="fas fa-trash" style="font-size:9px"></i></button></div></td></tr>`});w.innerHTML=h+'</tbody></table>';umu()}
 function umtf(bc){const m=llm(bc);if(!m)return;nav('add');document.getElementById('f-bc').value=m.barcode;ffm(m,'f-');toast('"'+m.namaProduk+'" diisi otomatis')}
-function amr(){if(!isAdmin()){toast('Hanya admin','er');return}['ma-bc','ma-nm','ma-sl'].forEach(i=>document.getElementById(i).value='');document.getElementById('ma-ct').selectedIndex=0;document.getElementById('ma-st').selectedIndex=0;document.getElementById('m-ma').classList.add('show')}
+function amr(){if(!isAd()){toast('Hanya admin','er');return}['ma-bc','ma-nm','ma-sl'].forEach(i=>document.getElementById(i).value='');document.getElementById('ma-ct').selectedIndex=0;document.getElementById('ma-st').selectedIndex=0;document.getElementById('m-ma').classList.add('show')}
 function sml(){const bc=document.getElementById('ma-bc').value.trim(),nm=document.getElementById('ma-nm').value.trim();if(!bc||!nm){toast('Barcode dan nama wajib','er');return}if(M.find(m=>m.barcode===bc)){toast('Barcode sudah ada','er');return}M.push({barcode:bc,namaProduk:nm,kategori:document.getElementById('ma-ct').value||'',satuan:document.getElementById('ma-st').value,shelfLife:parseInt(document.getElementById('ma-sl').value)||0});svm();cm('m-ma');toast('Master ditambahkan');rmt()}
-function dml(bc){if(!isAdmin()){toast('Hanya admin','er');return}M=M.filter(m=>m.barcode!==bc);svm();rmt();toast('Dihapus')}
-async function sym(){if(!isAdmin()){toast('Hanya admin','er');return}const u=localStorage.getItem(KMU);if(!u){toast('URL Master belum diisi','er');return}const b=document.getElementById('bsm');if(b){b.innerHTML='<i class="fas fa-sync-alt sp"></i> Syncing...';b.disabled=true}try{const r=await fetch(u+'?action=sync');const d=await r.json();if(d.items&&d.items.length){M=d.items;svm();localStorage.setItem(KLS,new Date().toISOString());toast('Sync: '+d.items.length+' item')}else toast('Sheet master kosong','in')}catch{toast('Gagal sync. Cek URL & akses = Anyone.','er')}if(b){b.innerHTML='<i class="fas fa-sync-alt"></i> Sync Sheets';b.disabled=false}rmt()}
-
-/* ====== TOKEN MANAGEMENT ====== */
-function genToken(role){
-  if(!isAdmin()){toast('Hanya admin','er');return}
-  const tk=gid().toUpperCase()+gid().toUpperCase()+gid().toUpperCase();
-  const name=prompt('Nama untuk token '+role.toUpperCase()+' ini:')||(role==='admin'?'Admin':'User');
-  const tokens=loadTokens();
-  tokens.push({token:tk,role,name,created:ts()});
-  saveTokens(tokens);
-  rtk();
-  toast('Token '+role.toUpperCase()+' dibuat untuk '+name);
-}
-function delToken(tk){
-  if(!isAdmin())return;
-  let tokens=loadTokens();
-  // Jangan hapus token yang sedang dipakai sendiri
-  if(AU&&AU.token===tk){toast('Tidak bisa hapus token sendiri','er');return}
-  tokens=tokens.filter(t=>t.token!==tk);
-  saveTokens(tokens);rtk();toast('Token dihapus');
-}
-function rtk(){
-  const el=document.getElementById('token-list');
-  if(!isAdmin()){el.innerHTML='';return}
-  const tokens=loadTokens();
-  el.innerHTML=tokens.map(t=>`<div style="background:var(--bg);border:1px solid var(--bdr);border-radius:8px;padding:8px 10px;display:flex;align-items:center;gap:8px">
-    <span class="role-badge role-${t.role}" style="flex-shrink:0">${t.role.toUpperCase()}</span>
-    <div style="flex:1;min-width:0">
-      <div style="font-size:11.5px;font-weight:600">${t.name}</div>
-      <div style="font-size:10px;color:var(--tx2);font-family:monospace;white-space:nowrap;overflow:hidden;text-overflow:ellipsis" title="${t.token}">${t.token}</div>
-    </div>
-    <button class="bt bt-s" style="background:var(--dgg);color:var(--dg);border:1px solid rgba(255,71,87,.2);flex-shrink:0" onclick="cpTk('${t.token}')" title="Copy"><i class="fas fa-copy" style="font-size:9px"></i></button>
-    ${AU&&AU.token!==t.token?`<button class="bt bt-s" style="background:var(--dgg);color:var(--dg);border:1px solid rgba(255,71,87,.2);flex-shrink:0" onclick="delToken('${t.token}')" title="Hapus"><i class="fas fa-trash" style="font-size:9px"></i></button>`:''}
-  </div>`).join('');
-}
-function cpTk(tk){navigator.clipboard.writeText(tk).then(()=>toast('Token disalin ke clipboard')).catch(()=>{prompt('Copy token ini:',tk)})}
+function dml(bc){if(!isAd()){toast('Hanya admin','er');return}M=M.filter(m=>m.barcode!==bc);svm();rmt();toast('Dihapus')}
+async function sym(){if(!isAd()){toast('Hanya admin','er');return}const u=localStorage.getItem(KURL);if(!u){toast('URL belum diisi di Pengaturan','er');return}const b=document.getElementById('bsm');if(b){b.innerHTML='<i class="fas fa-sync-alt sp"></i> Syncing...';b.disabled=true}try{const r=await fetch(u+'?action=sync');const d=await r.json();if(d.items&&d.items.length){M=d.items;svm();localStorage.setItem(KLS,new Date().toISOString());toast('Sync: '+d.items.length+' item')}else toast('Sheet master kosong','in')}catch{toast('Gagal sync. Cek URL & akses = Anyone.','er')}if(b){b.innerHTML='<i class="fas fa-sync-alt"></i> Sync Sheets';b.disabled=false}rmt()}
 
 /* ====== EXPORT / IMPORT ====== */
 function ecsv(){if(!P.length){toast('Tidak ada data','er');return}const h=['Barcode','Nama Produk','Kategori','Jumlah','Satuan','Tgl Masuk','Tgl Expired','Lokasi','PIC','Catatan','Status','Sisa Hari'];const r=P.map(p=>{const s=gs(p);return[p.barcode,`"${p.namaProduk}"`,p.kategori,p.jumlah,p.satuan,p.tanggalMasuk,p.tanggalExpired,`"${p.lokasi}"`,`"${p.pic||''}"`,`"${p.catatan||''}"`,s.l,s.d].join(',')});const b=new Blob(['\uFEFF'+h.join(',')+'\n'+r.join('\n')],{type:'text/csv;charset=utf-8;'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='expirywatch_'+ts()+'.csv';document.body.appendChild(a);a.click();a.remove();toast('Export '+P.length+' produk')}
-function icsv(ev){const f=ev.target.files[0];if(!f)return;if(!canWrite()){toast('Hanya user/admin','er');ev.target.value='';return}const rd=new FileReader();rd.onload=function(e){try{const ls=e.target.result.replace(/^\uFEFF/,'').split('\n').filter(l=>l.trim());if(ls.length<2){toast('CSV kosong','er');return}let n=0;for(let i=1;i<ls.length;i++){const c=pcv(ls[i]);if(c.length<7)continue;const p={id:gid(),barcode:c[0]||'-',namaProduk:(c[1]||'').replace(/^"|"$/g,''),kategori:c[2]||'Lainnya',jumlah:parseInt(c[3])||1,satuan:c[4]||'pcs',tanggalMasuk:c[5]||ts(),tanggalExpired:c[6],lokasi:(c[7]||'').replace(/^"|"$/g,'')||'-',pic:(c[8]||'').replace(/^"|"$/g,'')||'',catatan:(c[9]||'').replace(/^"|"$/g,''),createdAt:new Date().toISOString()};if(p.namaProduk&&p.tanggalExpired){P.unshift(p);n++}}sp();toast('Import '+n+' produk');ev.target.value=''}catch{toast('Gagal baca CSV','er')}};rd.readAsText(f)}
+function icsv(ev){const f=ev.target.files[0];if(!f)return;if(!canW()){toast('Hanya user/admin','er');ev.target.value='';return}const rd=new FileReader();rd.onload=function(e){try{const ls=e.target.result.replace(/^\uFEFF/,'').split('\n').filter(l=>l.trim());if(ls.length<2){toast('CSV kosong','er');return}let n=0;for(let i=1;i<ls.length;i++){const c=pcv(ls[i]);if(c.length<7)continue;const p={id:gid(),barcode:c[0]||'-',namaProduk:(c[1]||'').replace(/^"|"$/g,''),kategori:c[2]||'Lainnya',jumlah:parseInt(c[3])||1,satuan:c[4]||'pcs',tanggalMasuk:c[5]||ts(),tanggalExpired:c[6],lokasi:(c[7]||'').replace(/^"|"$/g,'')||'-',pic:(c[8]||'').replace(/^"|"$/g,'')||'',catatan:(c[9]||'').replace(/^"|"$/g,''),createdAt:new Date().toISOString()};if(p.namaProduk&&p.tanggalExpired){P.unshift(p);n++}}sp();toast('Import '+n+' produk');ev.target.value=''}catch{toast('Gagal baca CSV','er')}};rd.readAsText(f)}
 function pcv(l){const r=[];let c='',q=false;for(let i=0;i<l.length;i++){const ch=l[i];if(ch==='"')q=!q;else if(ch===','&&!q){r.push(c.trim());c=''}else c+=ch}r.push(c.trim());return r}
 
 /* ====== SETTINGS ====== */
-function ssv(){localStorage.setItem(KMU,document.getElementById('s-mu').value.trim());localStorage.setItem(KWU,document.getElementById('s-wu').value.trim())}
-function lsp(){document.getElementById('s-mu').value=localStorage.getItem(KMU)||'';document.getElementById('s-wu').value=localStorage.getItem(KWU)||'';rtk()}
-async function tmu(){const u=document.getElementById('s-mu').value.trim();if(!u){toast('Masukkan URL dulu','er');return}toast('Menguji koneksi...','in');try{const r=await fetch(u+'?action=sync');const d=await r.json();toast('Berhasil! '+d.total+' item')}catch{toast('Gagal. Cek deploy script.','er')}}
-function ptw(p){const u=localStorage.getItem(KWU);if(!u)return;fetch(u,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(p)}).catch(()=>{})}
+function ssv(){localStorage.setItem(KURL,document.getElementById('s-url').value.trim())}
+function lsp(){document.getElementById('s-url').value=localStorage.getItem(KURL)||''}
+async function turl(){const u=document.getElementById('s-url').value.trim();if(!u){toast('Masukkan URL dulu','er');return}toast('Menguji koneksi...','in');try{const r=await fetch(u+'?action=sync');const d=await r.json();toast('Berhasil! '+d.total+' item master')}catch{toast('Gagal. Cek deploy script.','er')}}
+function ptw(p){const u=localStorage.getItem(KURL);if(!u)return;fetch(u,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(p)}).catch(()=>{})}
 
 /* ====== ENTER KEY ====== */
 document.getElementById('mbc').addEventListener('keydown',e=>{if(e.key==='Enter')lmbc()});
 document.getElementById('f-bc').addEventListener('keydown',e=>{if(e.key==='Enter')lff()});
-document.getElementById('login-token').addEventListener('keydown',e=>{if(e.key==='Enter')doLogin()});
+document.getElementById('li-pw').addEventListener('keydown',e=>{if(e.key==='Enter')doLogin()});
+document.getElementById('li-uid').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('li-pw').focus()});
 
 /* ====== INIT ====== */
 function init(){
-  initTokens();
+  initUsers();
   lp();lm();
   document.getElementById('f-ms').value=ts();
-
-  // Cek auth
+  // Tampilkan hint default jika belum pernah sync
+  document.getElementById('default-hint').style.display=isDefaultUsers()?'block':'none';
+  // Cek auth yang sudah ada
   const auth=getAuth();
-  if(auth){
-    AU=auth;
-    enterApp();
-  }
-  // Jika tidak ada auth, tampilkan login screen (sudah default display:flex)
+  if(auth){AU=auth;enterApp()}
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
 </script>
 </body>
-  </html>
+    </html>
